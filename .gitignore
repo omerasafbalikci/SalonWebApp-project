@@ -1,0 +1,5 @@
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+*.vscode/

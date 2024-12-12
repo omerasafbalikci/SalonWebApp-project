@@ -154,3 +154,4 @@ C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\refint\SalonWebAp
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.pdb
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.genruntimeconfig.cache
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\ref\SalonWebApp.dll
+C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.sourcelink.json
