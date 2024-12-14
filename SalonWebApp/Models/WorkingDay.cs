@@ -6,7 +6,7 @@
         {
         }
 
-        public WorkingDay(int workingDayId, int employeeId, Employee employee, DateTime date, TimeSpan startTime, DateTime endTime, ICollection<Appointment> appointments, ICollection<Hours> hours)
+        public WorkingDay(int workingDayId, int employeeId, Employee employee, DateTime date, TimeSpan startTime, TimeSpan endTime, ICollection<Appointment> appointments, ICollection<Hours> hours)
         {
             WorkingDayId = workingDayId;
             EmployeeId = employeeId;
@@ -18,14 +18,14 @@
             Hours = hours;
         }
 
-        public int WorkingDayId { get; set; }
-        public int EmployeeId { get; set; }
-        public Employee Employee { get; set; }
-        public DateTime Date { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public required int WorkingDayId { get; set; }
+        public required int EmployeeId { get; set; }
+        public required Employee Employee { get; set; }
+        public required DateTime Date { get; set; }
+        public required TimeSpan StartTime { get; set; }
+        public required TimeSpan EndTime { get; set; }
 
-        public ICollection<Appointment> Appointments { get; set; }
-        public ICollection<Hours> Hours { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
+        public required ICollection<Hours> Hours { get; set; }
     }
 }

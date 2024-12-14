@@ -24,19 +24,19 @@
             Description = description;
         }
 
-        public int AppointmentId { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public int ServiceId { get; set; }
-        public Service Service { get; set; }
-        public int EmployeeId { get; set; }
-        public Employee Employee { get; set; }
-        public int SalonId { get; set; }
-        public Salon Salon { get; set; }
-        public int WorkingTimesId { get; set; }
-        public WorkingDay WorkingTimes { get; set; }
-        public int HoursId { get; set; }
-        public Hours Hours { get; set; }
-        public string Description { get; set; }
+        public required int AppointmentId { get; set; }
+        public required int UserId { get; set; }
+        public required User User { get; set; }
+        public required int ServiceId { get; set; }
+        public required Service Service { get; set; }
+        public required int EmployeeId { get; set; }
+        public required Employee Employee { get; set; }
+        public required int SalonId { get; set; }
+        public required Salon Salon { get; set; }
+        public required int WorkingTimesId { get; set; }
+        public required WorkingDay WorkingTimes { get; set; }
+        public required int HoursId { get; set; }
+        public required Hours Hours { get; set; }
+        public required string Description { get; set; }
     }
 }

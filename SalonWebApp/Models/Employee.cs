@@ -6,11 +6,11 @@
         {
         }
 
-        public Employee(int employeeId, string name, string surname, HashSet<SpecializationType> specializations, decimal salary, string phone, int salonId, Salon salon, ICollection<WorkingDay> workingTimes, ICollection<Appointment> appointments)
+        public Employee(int employeeId, string firstName, string lastName, HashSet<SpecializationType> specializations, decimal salary, string phone, int salonId, Salon salon, ICollection<WorkingDay> workingTimes, ICollection<Appointment> appointments)
         {
             EmployeeId = employeeId;
-            Name = name;
-            Surname = surname;
+            FirstName = firstName;
+            LastName = lastName;
             Specializations = specializations;
             Salary = salary;
             Phone = phone;
@@ -20,16 +20,16 @@
             Appointments = appointments;
         }
 
-        public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public HashSet<SpecializationType> Specializations { get; set; }
-        public decimal Salary { get; set; }
-        public string Phone { get; set; }
-        public int SalonId { get; set; }
-        public Salon Salon { get; set; }
+        public required int EmployeeId { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required HashSet<SpecializationType> Specializations { get; set; }
+        public required decimal Salary { get; set; }
+        public required string Phone { get; set; }
+        public required int SalonId { get; set; }
+        public required Salon Salon { get; set; }
 
-        public ICollection<WorkingDay> WorkingDays { get; set; }
-        public ICollection<Appointment> Appointments { get; set; }
+        public required ICollection<WorkingDay> WorkingDays { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
     }
 }
