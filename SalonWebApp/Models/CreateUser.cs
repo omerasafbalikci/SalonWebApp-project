@@ -2,13 +2,13 @@
 
 namespace SalonWebApp.Models
 {
-    public class CretateUser
+    public class CreateUser
     {
-        public CretateUser()
+        public CreateUser()
         {
         }
 
-        public CretateUser(string firstName, string lastName, string password, string confirmPassword, string email, string phoneNumber)
+        public CreateUser(string firstName, string lastName, string password, string confirmPassword, string email, string phoneNumber)
         {
             FirstName = firstName;
             LastName = lastName;

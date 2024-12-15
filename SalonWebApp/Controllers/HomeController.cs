@@ -10,7 +10,7 @@ namespace SalonWebApp.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
+            this._logger = logger;
         }
 
         public IActionResult Index()
