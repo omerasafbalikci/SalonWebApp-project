@@ -155,3 +155,6 @@ C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.pdb
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.genruntimeconfig.cache
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\ref\SalonWebApp.dll
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.sourcelink.json
+C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\scopedcss\Views\Shared\Admin.cshtml.rz.scp.css
+C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\scopedcss\Views\Shared\Layout2.cshtml.rz.scp.css
+C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\scopedcss\Views\Shared\User.cshtml.rz.scp.css

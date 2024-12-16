@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SalonWebApp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\SalonWebApp.xgwmxk5ccd.bundle.scp.css"
+      "PackagePath": "staticwebassets\\SalonWebApp.ofrxarlqvq.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
@@ -11,6 +11,10 @@
     {
       "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
+      "PackagePath": "staticwebassets\\images\\wp10168229-hair-stylist-wallpapers.jpg"
     },
     {
       "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\js\\site.js",

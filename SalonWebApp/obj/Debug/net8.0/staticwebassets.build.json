@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "j1L622Z7cUskXW6jkGVBBegSplo/qrGGHBZss8H23FM=",
+  "Hash": "Qb1lkCDZnNyqhvasjo3vQM4cw/0PDLWYIjCbpviq7pQ=",
   "Source": "SalonWebApp",
   "BasePath": "_content/SalonWebApp",
   "Mode": "Default",
@@ -1291,8 +1291,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "xgwmxk5ccd",
-      "Integrity": "H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=",
+      "Fingerprint": "ofrxarlqvq",
+      "Integrity": "3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SalonWebApp.styles.css"
@@ -1312,8 +1312,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "xgwmxk5ccd",
-      "Integrity": "H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=",
+      "Fingerprint": "ofrxarlqvq",
+      "Integrity": "3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SalonWebApp.bundle.scp.css"
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "wyuxg160cf",
+      "Integrity": "CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1359,6 +1359,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
+      "SourceId": "SalonWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\",
+      "BasePath": "_content/SalonWebApp",
+      "RelativePath": "images/wp10168229-hair-stylist-wallpapers#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u5rhdbr2do",
+      "Integrity": "wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg"
     },
     {
       "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\js\\site.js",
@@ -2581,51 +2602,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "362"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 10 Dec 2024 15:51:08 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -2636,7 +2612,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "428"
         },
         {
           "Name": "Content-Type",
@@ -2644,11 +2620,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 10 Dec 2024 15:51:08 GMT"
+          "Value": "Mon, 16 Dec 2024 00:09:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2658,7 +2634,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.wyuxg160cf.css",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 16 Dec 2024 00:09:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wyuxg160cf"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys="
         }
       ]
     },
@@ -4961,6 +4982,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "images/wp10168229-hair-stylist-wallpapers.jpg",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "166423"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 15 Dec 2024 23:20:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o="
+        }
+      ]
+    },
+    {
+      "Route": "images/wp10168229-hair-stylist-wallpapers.u5rhdbr2do.jpg",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "166423"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 15 Dec 2024 23:20:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u5rhdbr2do"
+        },
+        {
+          "Name": "label",
+          "Value": "images/wp10168229-hair-stylist-wallpapers.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o="
         }
       ]
     },
@@ -9731,7 +9834,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1129"
+          "Value": "1608"
         },
         {
           "Name": "Content-Type",
@@ -9739,11 +9842,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=\""
+          "Value": "\"3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 10 Dec 2024 15:55:30 GMT"
+          "Value": "Sun, 15 Dec 2024 16:38:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9753,7 +9856,97 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4="
+          "Value": "sha256-3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc="
+        }
+      ]
+    },
+    {
+      "Route": "SalonWebApp.ofrxarlqvq.bundle.scp.css",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SalonWebApp.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1608"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 15 Dec 2024 16:38:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ofrxarlqvq"
+        },
+        {
+          "Name": "label",
+          "Value": "SalonWebApp.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc="
+        }
+      ]
+    },
+    {
+      "Route": "SalonWebApp.ofrxarlqvq.styles.css",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SalonWebApp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1608"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 15 Dec 2024 16:38:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ofrxarlqvq"
+        },
+        {
+          "Name": "label",
+          "Value": "SalonWebApp.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc="
         }
       ]
     },
@@ -9768,7 +9961,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1129"
+          "Value": "1608"
         },
         {
           "Name": "Content-Type",
@@ -9776,11 +9969,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=\""
+          "Value": "\"3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 10 Dec 2024 15:55:30 GMT"
+          "Value": "Sun, 15 Dec 2024 16:38:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9790,97 +9983,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4="
-        }
-      ]
-    },
-    {
-      "Route": "SalonWebApp.xgwmxk5ccd.bundle.scp.css",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SalonWebApp.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1129"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 10 Dec 2024 15:55:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xgwmxk5ccd"
-        },
-        {
-          "Name": "label",
-          "Value": "SalonWebApp.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4="
-        }
-      ]
-    },
-    {
-      "Route": "SalonWebApp.xgwmxk5ccd.styles.css",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SalonWebApp.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1129"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 10 Dec 2024 15:55:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xgwmxk5ccd"
-        },
-        {
-          "Name": "label",
-          "Value": "SalonWebApp.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4="
+          "Value": "sha256-3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc="
         }
       ]
     }

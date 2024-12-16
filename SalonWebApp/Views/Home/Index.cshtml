@@ -1,8 +1,69 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    @using System.Security.Claims
+    ViewData["Title"] = "Salon Web App";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Hoşgeldiniz</h1>
-    <p>Salon App uygulaması</p>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1.display-4 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    p.lead {
+        font-size: 1.25rem;
+        color: white;
+        line-height: 1.6;
+    }
+
+    .custom-btn {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .custom-btn:hover {
+        background-color: #ffffff;
+        box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.7);
+        border: none;
+        color: blue;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Salon Web App</h1>
+    <p class="lead">
+        Hoş geldiniz! Kuaför işletme yönetim uygulamasına hoş geldiniz.
+        Kuaför hizmetlerine ulaşmak için lütfen giriş yapınız.
+    </p>
+    <p class="lead">
+        Kuaför randevularınızı online olarak planlayabilir ve yönetebilirsiniz.
+    </p>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a class="btn custom-btn btn-lg" href="@Url.Action("Login", "Member")" role="button">Giriş</a>
+    }
+    else
+    {
+        <p class="lead">
+            Hoş geldiniz,
+            <strong>@(User.Identity.IsAuthenticated ? User.FindFirst(ClaimTypes.Email)?.Value : "")</strong>
+        </p>
+    }
 </div>
