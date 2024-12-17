@@ -2223,51 +2223,6 @@
       ]
     },
     {
-      "Route": "SalonWebApp.ofrxarlqvq.styles.css",
-      "AssetFile": "SalonWebApp.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1608"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 15 Dec 2024 16:38:31 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ofrxarlqvq"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc="
-        },
-        {
-          "Name": "label",
-          "Value": "SalonWebApp.styles.css"
-        }
-      ]
-    },
-    {
       "Route": "SalonWebApp.styles.css",
       "AssetFile": "SalonWebApp.styles.css",
       "Selectors": [],
@@ -2282,7 +2237,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1608"
+          "Value": "1129"
         },
         {
           "Name": "Content-Type",
@@ -2290,17 +2245,107 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc=\""
+          "Value": "\"H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 15 Dec 2024 16:38:31 GMT"
+          "Value": "Mon, 16 Dec 2024 23:15:39 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3JBy0T0vyuvIDrG5UXkABPAVNDPeJfXRgeX1UZ5Muwc="
+          "Value": "sha256-H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4="
+        }
+      ]
+    },
+    {
+      "Route": "SalonWebApp.xgwmxk5ccd.styles.css",
+      "AssetFile": "SalonWebApp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1129"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 16 Dec 2024 23:15:39 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xgwmxk5ccd"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-H9EGWfKP6J61/tM+sIAC96M5Q/y5/XqtoOiZA/6PEB4="
+        },
+        {
+          "Name": "label",
+          "Value": "SalonWebApp.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/site.c2tiyv64ts.css",
+      "AssetFile": "css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "362"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 16 Dec 2024 23:11:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c2tiyv64ts"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
         }
       ]
     },
@@ -2319,7 +2364,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "428"
+          "Value": "362"
         },
         {
           "Name": "Content-Type",
@@ -2327,62 +2372,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys=\""
+          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 00:09:25 GMT"
+          "Value": "Mon, 16 Dec 2024 23:11:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.wyuxg160cf.css",
-      "AssetFile": "css/site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "428"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 00:09:25 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "wyuxg160cf"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-CC9PTlS6g2A03KOlGuTVExvht19nDaTTXQj/YxpoMys="
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
+          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
         }
       ]
     },

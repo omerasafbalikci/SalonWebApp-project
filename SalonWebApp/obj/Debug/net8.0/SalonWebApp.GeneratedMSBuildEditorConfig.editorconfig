@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SalonWebApp
 build_property.RootNamespace = SalonWebApp
@@ -24,10 +32,6 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/CreateUser/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXRlVXNlclxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Home/AboutUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,20 +40,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Member/ChangePassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXENoYW5nZVBhc3N3b3JkLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Member/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXExvZ2luLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/LoginLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExvZ2luTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/_LoginPartial.cshtml]
@@ -67,18 +59,6 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/omera/source/repos/Salon/SalonWebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/Admin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFkbWluLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = b-2rl3io9w4k
-
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/Layout2.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dDIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-99iwo5l47s
-
-[C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/User.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFVzZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-z1ekde7u4a
 
 [C:/Users/omera/source/repos/Salon/SalonWebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
