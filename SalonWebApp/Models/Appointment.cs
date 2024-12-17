@@ -1,12 +1,10 @@
-﻿namespace SalonWebApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SalonWebApp.Models
 {
     public class Appointment
     {
-        public Appointment()
-        {
-        }
-
-        public Appointment(int appointmentId, int userId, User user, int serviceId, Service service, int employeeId, Employee employee, int salonId, Salon salon, int workingTimesId, WorkingDay workingTimes, int hoursId, Hours hours, string description)
+        public Appointment(int appointmentId, int userId, User user, int serviceId, Service service, int employeeId, Employee employee, int timeId, Time time, string? description)
         {
             AppointmentId = appointmentId;
             UserId = userId;
@@ -15,28 +13,37 @@
             Service = service;
             EmployeeId = employeeId;
             Employee = employee;
-            SalonId = salonId;
-            Salon = salon;
-            WorkingTimesId = workingTimesId;
-            WorkingTimes = workingTimes;
-            HoursId = hoursId;
-            Hours = hours;
+            TimeId = timeId;
+            Time = time;
             Description = description;
         }
 
         public required int AppointmentId { get; set; }
-        public required int UserId { get; set; }
-        public required User User { get; set; }
-        public required int ServiceId { get; set; }
-        public required Service Service { get; set; }
-        public required int EmployeeId { get; set; }
-        public required Employee Employee { get; set; }
-        public required int SalonId { get; set; }
-        public required Salon Salon { get; set; }
-        public required int WorkingTimesId { get; set; }
-        public required WorkingDay WorkingTimes { get; set; }
-        public required int HoursId { get; set; }
-        public required Hours Hours { get; set; }
-        public required string Description { get; set; }
+
+        [Required]
+        public int UserId { get; set; }
+
+        [Required]
+        public User User { get; set; }
+
+        [Required]
+        public int ServiceId { get; set; }
+
+        [Required]
+        public Service Service { get; set; }
+
+        [Required]
+        public int EmployeeId { get; set; }
+
+        [Required]
+        public Employee Employee { get; set; }
+
+        [Required]
+        public required int TimeId { get; set; }
+
+        [Required]
+        public required Time Time { get; set; }
+
+        public string? Description { get; set; }
     }
 }

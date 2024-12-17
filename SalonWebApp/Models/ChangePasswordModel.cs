@@ -4,6 +4,13 @@ namespace SalonWebApp.Models
 {
     public class ChangePasswordModel
     {
+        public ChangePasswordModel(string oldPassword, string newPassword, string confirmNewPassword)
+        {
+            OldPassword = oldPassword;
+            NewPassword = newPassword;
+            ConfirmNewPassword = confirmNewPassword;
+        }
+
         [Required(ErrorMessage = "Old password is required.")]
         public string OldPassword { get; set; }
 
