@@ -4,11 +4,13 @@ namespace SalonWebApp.Models
 {
     public class Appointment
     {
-        public Appointment(int appointmentId, int userId, User user, int serviceId, Service service, int employeeId, Employee employee, int timeId, Time time, string? description)
+        public Appointment(int appointmentId, int userId, User user, int salonId, Salon salon, int serviceId, Service service, int employeeId, Employee employee, int timeId, Time time, string? description)
         {
             AppointmentId = appointmentId;
             UserId = userId;
             User = user;
+            SalonId = salonId;
+            Salon = salon;
             ServiceId = serviceId;
             Service = service;
             EmployeeId = employeeId;
@@ -25,6 +27,12 @@ namespace SalonWebApp.Models
 
         [Required]
         public User User { get; set; }
+
+        [Required]
+        public int SalonId { get; set; }
+
+        [Required]
+        public Salon Salon { get; set; }
 
         [Required]
         public int ServiceId { get; set; }

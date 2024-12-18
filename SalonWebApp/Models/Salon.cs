@@ -4,7 +4,7 @@ namespace SalonWebApp.Models
 {
     public class Salon
     {
-        public Salon(int salonId, string name, SalonType type, string openDays, TimeSpan openingHour, TimeSpan closingHour, string address, string phone, ICollection<Employee> employees, ICollection<Service> services)
+        public Salon(int salonId, string name, SalonType type, string openDays, TimeSpan openingHour, TimeSpan closingHour, string address, string phone, ICollection<Employee> employees, ICollection<Service> services, ICollection<Appointment> appointments)
         {
             SalonId = salonId;
             Name = name;
@@ -16,6 +16,7 @@ namespace SalonWebApp.Models
             Phone = phone;
             Employees = employees;
             Services = services;
+            Appointments = appointments;
         }
 
         public required int SalonId { get; set; }
@@ -48,6 +49,7 @@ namespace SalonWebApp.Models
 
         public required ICollection<Employee> Employees { get; set; }
         public required ICollection<Service> Services { get; set; }
+        public required ICollection<Appointment> Appointments { get; set; }
 
         public bool IsOpen(DateTime dateTime)
         {

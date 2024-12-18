@@ -25,22 +25,33 @@ namespace SalonWebApp.Models
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(u => u.UserId);
-                entity.Property(u => u.FirstName).IsRequired().HasMaxLength(100);
-                entity.Property(u => u.LastName).IsRequired().HasMaxLength(100);
+                entity.Property(u => u.FirstName).IsRequired();
+                entity.Property(u => u.LastName).IsRequired();
                 entity.Property(u => u.Password).IsRequired();
                 entity.Property(u => u.Email).IsRequired();
                 entity.Property(u => u.PhoneNumber).IsRequired();
+                entity.Property(u => u.Gender).IsRequired();
+                entity.Property(u => u.Role).IsRequired();
+
+                entity.HasMany(u => u.Appointments).WithOne(a => a.User).HasForeignKey(a => a.UserId);
             });
 
             modelBuilder.Entity<Salon>(entity =>
             {
                 entity.HasKey(s => s.SalonId);
                 entity.Property(s => s.Name).IsRequired().HasMaxLength(100);
+                entity.Property(s => s.OpenDays).IsRequired();
+                entity.Property(s => s.OpeningHour).IsRequired();
+                entity.Property(s => s.ClosingHour).IsRequired();
+                entity.Property(s => s.Type).HasConversion<string>().IsRequired();
                 entity.Property(s => s.Address).IsRequired().HasMaxLength(200);
                 entity.Property(s => s.Phone).IsRequired();
+
+                entity.HasMany(s => s.Employees).WithOne(e => e.Salon).HasForeignKey(e => e.SalonId);
+                entity.HasMany(s => s.Services).WithOne(serv => serv.Salon).HasForeignKey(serv => serv.SalonId);
+                entity.HasMany(s => s.Appointments).WithOne(a => a.Salon).HasForeignKey(a => a.SalonId);
             });
 
-            // Employee
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasKey(e => e.EmployeeId);
@@ -49,25 +60,22 @@ namespace SalonWebApp.Models
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.Phone).IsRequired();
 
-                entity.HasOne(e => e.Salon)
-                      .WithMany(s => s.Employees)
-                      .HasForeignKey(e => e.SalonId);
+                entity.HasOne(e => e.Salon).WithMany(s => s.Employees).HasForeignKey(e => e.SalonId);
+                entity.HasMany(e => e.EmployeeServices).WithOne(es => es.Employee).HasForeignKey(es => es.EmployeeId);
+                entity.HasMany(e => e.WorkingDays).WithOne(wd => wd.Employee).HasForeignKey(wd => wd.EmployeeId);
+                entity.HasMany(e => e.Appointments).WithOne(a => a.Employee).HasForeignKey(a => a.EmployeeId);
             });
 
-            // EmployeeService
             modelBuilder.Entity<EmployeeService>(entity =>
             {
                 entity.HasKey(es => es.Id);
-                entity.HasOne(es => es.Employee)
-                      .WithMany(e => e.EmployeeServices)
-                      .HasForeignKey(es => es.EmployeeId);
+                entity.Property(es => es.EmployeeId).IsRequired();
+                entity.Property(es => es.ServiceId).IsRequired();
 
-                entity.HasOne(es => es.Service)
-                      .WithMany(s => s.EmployeeServices)
-                      .HasForeignKey(es => es.ServiceId);
+                entity.HasOne(es => es.Employee).WithMany(e => e.EmployeeServices).HasForeignKey(es => es.EmployeeId);
+                entity.HasOne(es => es.Service).WithMany().HasForeignKey(es => es.ServiceId);
             });
 
-            // Service
             modelBuilder.Entity<Service>(entity =>
             {
                 entity.HasKey(s => s.ServiceId);
@@ -80,7 +88,6 @@ namespace SalonWebApp.Models
                       .HasForeignKey(s => s.SalonId);
             });
 
-            // Time
             modelBuilder.Entity<Time>(entity =>
             {
                 entity.HasKey(t => t.TimeId);
@@ -89,17 +96,15 @@ namespace SalonWebApp.Models
                 entity.Property(t => t.EndTime).IsRequired();
             });
 
-            // WorkingDay
             modelBuilder.Entity<WorkingDay>(entity =>
             {
                 entity.HasKey(wd => wd.WorkingDayId);
+                entity.Property(wd => wd.EmployeeId).IsRequired();
                 entity.Property(wd => wd.Date).IsRequired();
                 entity.Property(wd => wd.StartTime).IsRequired();
                 entity.Property(wd => wd.EndTime).IsRequired();
 
-                entity.HasOne(wd => wd.Employee)
-                      .WithMany(e => e.WorkingDays)
-                      .HasForeignKey(wd => wd.EmployeeId);
+                entity.HasOne(wd => wd.Employee).WithMany(e => e.WorkingDays).HasForeignKey(wd => wd.EmployeeId);
             });
         }
     }
