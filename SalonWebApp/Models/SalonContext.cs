@@ -68,7 +68,7 @@ namespace SalonWebApp.Models
 
             modelBuilder.Entity<EmployeeService>(entity =>
             {
-                entity.HasKey(es => es.Id);
+                entity.HasKey(es => es.EmployeeServiceId);
                 entity.Property(es => es.EmployeeId).IsRequired();
                 entity.Property(es => es.ServiceId).IsRequired();
 
@@ -78,14 +78,14 @@ namespace SalonWebApp.Models
 
             modelBuilder.Entity<Service>(entity =>
             {
-                entity.HasKey(s => s.ServiceId);
-                entity.Property(s => s.Name).IsRequired();
-                entity.Property(s => s.Price).IsRequired();
-                entity.Property(s => s.Duration).IsRequired();
+                entity.HasKey(serv => serv.ServiceId);
+                entity.Property(serv => serv.Name).IsRequired();
+                entity.Property(serv => serv.Price).IsRequired().HasColumnType("decimal(18,2)");
+                entity.Property(serv => serv.Duration).IsRequired();
 
-                entity.HasOne(s => s.Salon)
-                      .WithMany(salon => salon.Services)
-                      .HasForeignKey(s => s.SalonId);
+                entity.HasOne(serv => serv.Salon).WithMany(s => s.Services).HasForeignKey(serv => serv.SalonId);
+
+                entity.HasMany(serv => serv.EmployeeServices).WithOne(es => es.Service).HasForeignKey(es => es.ServiceId);
             });
 
             modelBuilder.Entity<Time>(entity =>
@@ -94,6 +94,9 @@ namespace SalonWebApp.Models
                 entity.Property(t => t.Date).IsRequired();
                 entity.Property(t => t.StartTime).IsRequired();
                 entity.Property(t => t.EndTime).IsRequired();
+                entity.Property(t => t.Selectable).IsRequired();
+
+                entity.HasOne(t => t.Appointments).WithMany().HasForeignKey(t => t.AppointmentId);
             });
 
             modelBuilder.Entity<WorkingDay>(entity =>

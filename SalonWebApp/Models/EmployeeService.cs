@@ -4,16 +4,16 @@ namespace SalonWebApp.Models
 {
     public class EmployeeService
     {
-        public EmployeeService(int id, int employeeId, Employee employee, int serviceId, Service service)
+        public EmployeeService(int employeeServiceId, int employeeId, Employee employee, int serviceId, Service service)
         {
-            Id = id;
+            EmployeeServiceId = employeeServiceId;
             EmployeeId = employeeId;
             Employee = employee;
             ServiceId = serviceId;
             Service = service;
         }
 
-        public required int Id {  get; set; }
+        public required int EmployeeServiceId {  get; set; }
 
         [Required]
         public int EmployeeId { get; set; }
