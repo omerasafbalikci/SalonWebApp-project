@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class Salon
     {
+        public Salon()
+        {
+        }
+
         public Salon(int salonId, string name, SalonType type, string openDays, TimeSpan openingHour, TimeSpan closingHour, string address, string phone, ICollection<Employee> employees, ICollection<Service> services, ICollection<Appointment> appointments)
         {
             SalonId = salonId;

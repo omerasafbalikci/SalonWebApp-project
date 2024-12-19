@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class WorkingDay
     {
+        public WorkingDay()
+        {
+        }
+
         public WorkingDay(int workingDayId, int employeeId, Employee employee, DateTime date, TimeSpan startTime, TimeSpan endTime)
         {
             WorkingDayId = workingDayId;

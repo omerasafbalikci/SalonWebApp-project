@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class EmployeeService
     {
+        public EmployeeService()
+        {
+        }
+
         public EmployeeService(int employeeServiceId, int employeeId, Employee employee, int serviceId, Service service)
         {
             EmployeeServiceId = employeeServiceId;

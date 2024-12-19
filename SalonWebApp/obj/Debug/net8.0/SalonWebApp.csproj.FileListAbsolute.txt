@@ -142,7 +142,6 @@ C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\staticwebassets\m
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.SalonWebApp.props
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SalonWebApp.props
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWeb.CA09B968.Up2Date
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\SalonWebApp.dll
 C:\Users\omera\source\repos\Salon\SalonWebApp\obj\Debug\net8.0\refint\SalonWebApp.dll
@@ -271,3 +270,7 @@ C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\runtimes\win\lib\
 C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\omera\source\repos\Salon\SalonWebApp\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll

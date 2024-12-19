@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class User
     {
+        public User()
+        {
+        }
+
         public User(int userId, string firstName, string lastName, string password, string email, string phoneNumber, Gender gender, Roles role, ICollection<Appointment> appointments)
         {
             UserId = userId;

@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class Employee
     {
+        public Employee()
+        {
+        }
+
         public Employee(int employeeId, string firstName, string lastName, decimal salary, string phone, int salonId, Salon salon, ICollection<EmployeeService> employeeServices, ICollection<WorkingDay> workingDays, ICollection<Appointment> appointments)
         {
             EmployeeId = employeeId;

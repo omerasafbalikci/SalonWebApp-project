@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class Appointment
     {
+        public Appointment()
+        {
+        }
+
         public Appointment(int appointmentId, int userId, User user, int salonId, Salon salon, int serviceId, Service service, int employeeId, Employee employee, int timeId, Time time, string? description)
         {
             AppointmentId = appointmentId;

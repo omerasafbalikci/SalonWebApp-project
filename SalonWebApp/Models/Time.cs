@@ -4,14 +4,17 @@ namespace SalonWebApp.Models
 {
     public class Time
     {
-        public Time(int timeId, DateTime date, TimeSpan startTime, TimeSpan endTime, bool selectable, int appointmentId, Appointment appointments)
+        public Time()
+        {
+        }
+
+        public Time(int timeId, DateTime date, TimeSpan startTime, TimeSpan endTime, bool selectable, ICollection<Appointment> appointments)
         {
             TimeId = timeId;
             Date = date;
             StartTime = startTime;
             EndTime = endTime;
             Selectable = selectable;
-            AppointmentId = appointmentId;
             Appointments = appointments;
         }
 
@@ -30,9 +33,6 @@ namespace SalonWebApp.Models
         public bool Selectable { get; set; }
 
         [Required]
-        public int AppointmentId { get; set; }
-
-        [Required]
-        public Appointment Appointments { get; set; }
+        public ICollection<Appointment> Appointments { get; set; } 
     }
 }
