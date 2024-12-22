@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\SalonWebApp.xgwmxk5ccd.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
       "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

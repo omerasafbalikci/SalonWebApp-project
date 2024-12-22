@@ -4,7 +4,7 @@ namespace SalonWebApp.Models
 {
     public class CreateUser
     {
-        public CreateUser(string firstName, string lastName, string password, string confirmPassword, string email, string phoneNumber)
+        public CreateUser(string firstName, string lastName, string password, string confirmPassword, string email, string phoneNumber, Gender gender)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -12,6 +12,7 @@ namespace SalonWebApp.Models
             ConfirmPassword = confirmPassword;
             Email = email;
             PhoneNumber = phoneNumber;
+            Gender = gender;
         }
 
         [Required(ErrorMessage = "First name is required.")]

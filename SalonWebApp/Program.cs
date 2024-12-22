@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SalonWebApp.Data;
@@ -16,7 +16,7 @@ builder.Services.AddDbContext<SalonContext>(options =>
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(s =>
     {
-        s.LoginPath = "Member/Login";
+        s.LoginPath = "/Account/Login";
     });
 
 var app = builder.Build();
