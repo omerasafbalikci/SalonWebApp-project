@@ -1,4 +1,3 @@
-wwwroot\css\Login.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\wp10168229-hair-stylist-wallpapers.jpg

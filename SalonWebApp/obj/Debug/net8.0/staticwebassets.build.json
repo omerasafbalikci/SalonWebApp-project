@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rni0QQys3QsH/UxahIdRlqEJBp29BMAgvYS7F8p9amg=",
+  "Hash": "cjvqP8FSFMoWuoj28l2CvGc6Zyd6G0WVggxYRoByObY=",
   "Source": "SalonWebApp",
   "BasePath": "_content/SalonWebApp",
   "Mode": "Default",
@@ -1319,27 +1319,6 @@
       "OriginalItemSpec": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SalonWebApp.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\Login.css",
-      "SourceId": "SalonWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\",
-      "BasePath": "_content/SalonWebApp",
-      "RelativePath": "css/Login#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "jcada3rwo2",
-      "Integrity": "o1sYwpX48D51dUR4RQJo9UJV1xBvoI6O9FL+VH+Haak=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Login.css"
-    },
-    {
       "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
       "SourceId": "SalonWebApp",
       "SourceType": "Discovered",
@@ -2622,88 +2601,6 @@
     }
   ],
   "Endpoints": [
-    {
-      "Route": "css/Login.css",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\Login.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5995"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"o1sYwpX48D51dUR4RQJo9UJV1xBvoI6O9FL+VH+Haak=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 21 Dec 2024 23:48:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-o1sYwpX48D51dUR4RQJo9UJV1xBvoI6O9FL+VH+Haak="
-        }
-      ]
-    },
-    {
-      "Route": "css/Login.jcada3rwo2.css",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\Login.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5995"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"o1sYwpX48D51dUR4RQJo9UJV1xBvoI6O9FL+VH+Haak=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 21 Dec 2024 23:48:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "jcada3rwo2"
-        },
-        {
-          "Name": "label",
-          "Value": "css/Login.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-o1sYwpX48D51dUR4RQJo9UJV1xBvoI6O9FL+VH+Haak="
-        }
-      ]
-    },
     {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\css\\site.css",
