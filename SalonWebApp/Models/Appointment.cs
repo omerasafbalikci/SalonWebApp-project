@@ -51,10 +51,10 @@ namespace SalonWebApp.Models
         public Employee Employee { get; set; }
 
         [Required]
-        public required int TimeId { get; set; }
+        public int TimeId { get; set; }
 
         [Required]
-        public required Time Time { get; set; }
+        public Time Time { get; set; }
 
         public string? Description { get; set; }
     }
