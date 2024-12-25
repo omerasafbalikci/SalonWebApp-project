@@ -10,26 +10,24 @@ using SalonWebApp.Models;
 
 namespace SalonWebApp.Controllers
 {
-    [Authorize]
-    public class ServicesController : Controller
+    [Authorize(Roles = "ADMIN")]
+    public class EmployeeServicesController : Controller
     {
         private readonly SalonContext _context;
 
-        public ServicesController(SalonContext context)
+        public EmployeeServicesController(SalonContext context)
         {
             _context = context;
         }
 
-        // GET: Services
-        [Authorize(Roles = "ADMIN")]
+        // GET: EmployeeServices
         public async Task<IActionResult> Index()
         {
-            var services = _context.Services.Include(s => s.Salon);
-            return View(await services.ToListAsync());
+            var employeeServices = _context.EmployeeServices.Include(e => e.Employee).Include(e => e.Service);
+            return View(await employeeServices.ToListAsync());
         }
 
-        // GET: Services/Details/5
-        [Authorize(Roles = "ADMIN")]
+        // GET: EmployeeServices/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,43 +35,41 @@ namespace SalonWebApp.Controllers
                 return NotFound();
             }
 
-            var service = await _context.Services
-                .Include(s => s.Salon)
-                .Include(s => s.EmployeeServices)
-                .FirstOrDefaultAsync(m => m.ServiceId == id);
-            if (service == null)
+            var employeeService = await _context.EmployeeServices
+                .Include(e => e.Employee)
+                .Include(e => e.Service)
+                .FirstOrDefaultAsync(m => m.EmployeeServiceId == id);
+            if (employeeService == null)
             {
                 return NotFound();
             }
 
-            return View(service);
+            return View(employeeService);
         }
 
-        // GET: Services/Create
-        [Authorize(Roles = "ADMIN")]
+        // GET: EmployeeServices/Create
         public IActionResult Create()
         {
-            ViewBag.Salons = _context.Salons.ToList();
+            ViewBag.Employees = _context.Employees.ToList();
+            ViewBag.Services = _context.Services.ToList();
             return View();
         }
 
-        // POST: Services/Create
+        // POST: EmployeeServices/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Create(Service service)
+        public async Task<IActionResult> Create(EmployeeService employeeService)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(service);
+                _context.Add(employeeService);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(service);
+            return View(employeeService);
         }
 
-        // GET: Services/Edit/5
-        [Authorize(Roles = "ADMIN")]
+        // GET: EmployeeServices/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,22 +77,22 @@ namespace SalonWebApp.Controllers
                 return NotFound();
             }
 
-            var service = await _context.Services.FindAsync(id);
-            if (service == null)
+            var employeeService = await _context.EmployeeServices.FindAsync(id);
+            if (employeeService == null)
             {
                 return NotFound();
             }
-            ViewBag.Salons = _context.Salons.ToList();
-            return View(service);
+            ViewBag.Employees = _context.Employees.ToList();
+            ViewBag.Services = _context.Services.ToList();
+            return View(employeeService);
         }
 
-        // POST: Services/Edit/5
+        // POST: EmployeeServices/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Edit(int id, Service service)
+        public async Task<IActionResult> Edit(int id, EmployeeService employeeService)
         {
-            if (id != service.ServiceId)
+            if (id != employeeService.EmployeeServiceId)
             {
                 return NotFound();
             }
@@ -105,12 +101,12 @@ namespace SalonWebApp.Controllers
             {
                 try
                 {
-                    _context.Update(service);
+                    _context.Update(employeeService);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ServiceExists(service.ServiceId))
+                    if (!EmployeeServiceExists(employeeService.EmployeeServiceId))
                     {
                         return NotFound();
                     }
@@ -121,11 +117,10 @@ namespace SalonWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(service);
+            return View(employeeService);
         }
 
-        // GET: Services/Delete/5
-        [Authorize(Roles = "ADMIN")]
+        // GET: EmployeeServices/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,36 +128,36 @@ namespace SalonWebApp.Controllers
                 return NotFound();
             }
 
-            var service = await _context.Services
-                .Include(s => s.Salon)
-                .FirstOrDefaultAsync(m => m.ServiceId == id);
-            if (service == null)
+            var employeeService = await _context.EmployeeServices
+                .Include(e => e.Employee)
+                .Include(e => e.Service)
+                .FirstOrDefaultAsync(m => m.EmployeeServiceId == id);
+            if (employeeService == null)
             {
                 return NotFound();
             }
 
-            return View(service);
+            return View(employeeService);
         }
 
-        // POST: Services/Delete/5
+        // POST: EmployeeServices/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var service = await _context.Services.FindAsync(id);
-            if (service != null)
+            var employeeService = await _context.EmployeeServices.FindAsync(id);
+            if (employeeService != null)
             {
-                _context.Services.Remove(service);
+                _context.EmployeeServices.Remove(employeeService);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ServiceExists(int id)
+        private bool EmployeeServiceExists(int id)
         {
-            return _context.Services.Any(e => e.ServiceId == id);
+            return _context.EmployeeServices.Any(e => e.EmployeeServiceId == id);
         }
     }
 }
