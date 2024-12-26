@@ -18,7 +18,7 @@ namespace SalonWebApp.Models
             PhoneNumber = phoneNumber;
             Gender = gender;
             Role = role;
-            Appointments = appointments;
+            Appointments = new List<Appointment>();
         }
 
         public int UserId { get; set; }
@@ -45,6 +45,6 @@ namespace SalonWebApp.Models
         [Required]
         public Roles Role { get; set; }
 
-        public required ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

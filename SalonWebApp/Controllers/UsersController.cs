@@ -42,14 +42,14 @@ namespace SalonWebApp.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        // GET: Users/CreateMember
         [AllowAnonymous]
         public IActionResult CreateMember()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Users/CreateMember
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
@@ -84,7 +84,7 @@ namespace SalonWebApp.Controllers
             return View(user);
         }
 
-        // GET: User/CreateAdmin => Sadece ADMIN bir admin oluşturabilir.
+        // GET: User/CreateAdmin
         [Authorize(Roles = "ADMIN")]
         public IActionResult CreateAdmin()
         {
@@ -99,15 +99,13 @@ namespace SalonWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Aynı email var mı kontrol edebilirsiniz (opsiyonel)
                 bool emailExists = _context.Users.Any(u => u.Email == model.Email);
                 if (emailExists)
                 {
-                    ModelState.AddModelError("", "This email is already registered.");
+                    ModelState.AddModelError("", "Bu email zaten mevcut.");
                     return View(model);
                 }
 
-                // Parolayı hashliyoruz
                 string hashedPassword = HashPassword(model.Password);
 
                 var user = new User
@@ -144,22 +142,18 @@ namespace SalonWebApp.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            // Kullanıcı var mı? (hash kontrolü)
             var hashedPassword = HashPassword(model.Password);
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == hashedPassword);
 
             if (user == null)
             {
-                ModelState.AddModelError("", "Invalid email or password.");
+                ModelState.AddModelError("", "Email veya parola yanlış.");
                 return View(model);
             }
 
-            // Basit bir session (veya Identity) örneği:
-            // HttpContext.Session.SetString("UserId", user.UserId.ToString());
-            // HttpContext.Session.SetString("Role", user.Role.ToString());
-
-            // Ya da Cookie auth, JWT vb. konfigüre edilebilir.
+            HttpContext.Session.SetString("UserId", user.UserId.ToString());
+            HttpContext.Session.SetString("Role", user.Role.ToString());
 
             return RedirectToAction("Index", "Home");
         }
@@ -168,8 +162,7 @@ namespace SalonWebApp.Controllers
         [Authorize]
         public IActionResult Logout()
         {
-            // HttpContext.Session.Clear();
-            // Cookie veya Token silme işlemleri
+            HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
 
@@ -215,6 +208,7 @@ namespace SalonWebApp.Controllers
             {
                 try
                 {
+                    user.Password = HashPassword(user.Password);
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
