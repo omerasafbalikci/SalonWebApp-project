@@ -2,43 +2,41 @@
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - SalonWebApp</title>
+    <title>@ViewBag.Title - SalonWebApp (Kullanıcı)</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        /* Footer boşluğu azaltmak için body, html yüksekliği ayarla */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+    </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SalonWebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">SalonWebApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUser"
+                        aria-controls="navbarUser" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarUser">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a>
                         </li>
-                        @if (User.IsInRole("ADMIN"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Admin Paneli
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="adminMenu">
-                                    <li><a class="dropdown-item" asp-controller="Salons" asp-action="Index">Salon Yönetimi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Employees" asp-action="Index">Çalışan Yönetimi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Services" asp-action="Index">Servis Yönetimi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Users" asp-action="Index">Kullanıcı Yönetimi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="WorkingDays" asp-action="Index">Çalışma Günleri</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Times" asp-action="Index">Zaman Dilimleri</a></li>
-                                    <li><a class="dropdown-item" asp-controller="EmployeeServices" asp-action="Index">Çalışan-Servis İlişkisi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Appointments" asp-action="Index">Randevular</a></li>
-                                </ul>
-                            </li>
-                        }
-                        @if (User.Identity?.IsAuthenticated == true)
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Salons" asp-action="Index">Salonlar</a>
+                        </li>
+                        <!-- Üye, salonların detaylarını görebilir, randevu alabilir -->
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("ADMIN"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Appointments" asp-action="Create">Randevu Al</a>
@@ -47,10 +45,18 @@
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
-                        @if (User.Identity?.IsAuthenticated == true)
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Users" asp-action="Edit" asp-route-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value">Profil</a>
+                                <a class="nav-link" asp-controller="Users" asp-action="Edit"
+                                   asp-route-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value">
+                                    Profil
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Users" asp-action="ChangePassword">
+                                    Şifre Değiştir
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Users" asp-action="Logout">Çıkış</a>
@@ -71,12 +77,13 @@
         </nav>
     </header>
 
-    <div class="container mt-4">
+    <!-- Body content -->
+    <main class="container flex-fill">
         @RenderBody()
-    </div>
+    </main>
 
-    <footer class="bg-dark text-light text-center p-3 mt-4">
-        <span>© 2024 SalonWebApp</span>
+    <footer class="bg-dark text-light text-center mt-auto p-3">
+        © 2024 SalonWebApp - Kullanıcı Arayüzü
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

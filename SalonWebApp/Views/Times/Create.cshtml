@@ -1,48 +1,50 @@
 ﻿@model SalonWebApp.Models.Time
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Zaman Dilimi Ekle";
 }
 
-<h1>Create</h1>
-
-<h4>Time</h4>
+<h2>Yeni Zaman Dilimi Ekle</h2>
 <hr />
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Date" class="form-label">Tarih</label>
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="StartTime" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="StartTime" class="form-label">Başlangıç Saati</label>
                 <input asp-for="StartTime" class="form-control" />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EndTime" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="EndTime" class="form-label">Bitiş Saati</label>
                 <input asp-for="EndTime" class="form-control" />
                 <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Selectable" /> @Html.DisplayNameFor(model => model.Selectable)
-                </label>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" asp-for="Selectable" />
+                <label class="form-check-label" asp-for="Selectable">Seçilebilir</label>
+                <span asp-validation-for="Selectable" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.PartialAsync("_ValidationScriptsPartial");
+    }
 }

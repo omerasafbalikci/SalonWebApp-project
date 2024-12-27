@@ -1,41 +1,37 @@
 ﻿@model IEnumerable<SalonWebApp.Models.EmployeeService>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Çalışan - Servis İlişkileri";
 }
 
-<h1>Index</h1>
+<h2>Çalışan - Servis İlişkileri</h2>
+<hr />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Yeni İlişki Ekle</a>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Service)
-            </th>
+            <th>Çalışan</th>
+            <th>Servis</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
+            <td>@item.Employee.FirstName @item.Employee.LastName</td>
+            <td>@item.Service.Name</td>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeServiceId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EmployeeServiceId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EmployeeServiceId">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.EmployeeServiceId" class="btn btn-info btn-sm">Detay</a>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeServiceId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@item.EmployeeServiceId" class="btn btn-danger btn-sm ms-1">Sil</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

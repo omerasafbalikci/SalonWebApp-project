@@ -1,7 +1,9 @@
 ﻿@model SalonWebApp.Models.User
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = User.IsInRole("Admin")
+        ? "~/Views/Shared/_LayoutAdmin.cshtml"
+        : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Kullanıcı Düzenle";
 }
 
@@ -57,5 +59,7 @@
 </div>
 
 @section Scripts {
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

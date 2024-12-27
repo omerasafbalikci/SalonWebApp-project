@@ -24,13 +24,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         opt.SlidingExpiration = true; // Oturum uzatılabilirlik
     });
 
-// Session (Opsiyonel - Session Kullanıyorsanız Açık Bırakın)
+// Session
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30); // Oturum süresi
     options.Cookie.HttpOnly = true; // Güvenlik için HttpOnly
     options.Cookie.IsEssential = true; // GDPR için gerekli
 });
+
+builder.Services.AddHttpContextAccessor(); // HttpContext erişimi için gerekli
 
 var app = builder.Build();
 
@@ -46,9 +48,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Sırayla Authentication -> Session -> Authorization
+// Middleware sırası önemlidir
 app.UseAuthentication();
-app.UseSession(); // Eğer Session kullanıyorsanız aktif bırakın
+app.UseSession(); // Session middleware'i aktif
 app.UseAuthorization();
 
 app.MapControllerRoute(

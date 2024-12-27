@@ -1,53 +1,41 @@
 ﻿@model IEnumerable<SalonWebApp.Models.WorkingDay>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Çalışma Günleri";
 }
 
-<h1>Index</h1>
+<h2>Çalışma Günleri</h2>
+<hr />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Yeni Çalışma Günü Ekle</a>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndTime)
-            </th>
+            <th>Çalışan</th>
+            <th>Tarih</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.WorkingDayId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.WorkingDayId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.WorkingDayId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.Employee != null ? item.Employee.FirstName + " " + item.Employee.LastName : "N/A")</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.StartTime</td>
+                <td>@item.EndTime</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.WorkingDayId" class="btn btn-info btn-sm">Detay</a>
+                    <a asp-action="Edit" asp-route-id="@item.WorkingDayId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@item.WorkingDayId" class="btn btn-danger btn-sm ms-1">Sil</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

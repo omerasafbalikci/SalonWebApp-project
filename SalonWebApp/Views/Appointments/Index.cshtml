@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<SalonWebApp.Models.Appointment>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Randevular";
 }
 
-<h1>Randevular</h1>
+<h2>Randevular</h2>
 <hr />
 
 <p>
@@ -15,32 +15,32 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Kullanıcı (Email)</th>
+            <th>Kullanıcı</th>
             <th>Salon</th>
             <th>Servis</th>
             <th>Çalışan</th>
-            <th>Saat</th>
+            <th>Tarih/Saat</th>
             <th>Açıklama</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var appointment in Model)
         {
             <tr>
-                <td>@item.User?.Email</td>
-                <td>@item.Salon?.Name</td>
-                <td>@item.Service?.Name</td>
-                <td>@item.Employee?.FirstName @item.Employee?.LastName</td>
+                <td>@appointment.User?.Email</td>
+                <td>@appointment.Salon?.Name</td>
+                <td>@appointment.Service?.Name</td>
+                <td>@appointment.Employee?.FirstName @appointment.Employee?.LastName</td>
                 <td>
-                    @item.Time?.Date.ToString("dd.MM.yyyy")
-                    [@item.Time?.StartTime] - [@item.Time?.EndTime]
+                    @appointment.Time?.Date.ToShortDateString()
+                    [@appointment.Time?.StartTime - @appointment.Time?.EndTime]
                 </td>
-                <td>@item.Description</td>
+                <td>@appointment.Description</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.AppointmentId" class="btn btn-sm btn-info">Detay</a>
-                    <a asp-action="Edit" asp-route-id="@item.AppointmentId" class="btn btn-sm btn-warning">Düzenle</a>
-                    <a asp-action="Delete" asp-route-id="@item.AppointmentId" class="btn btn-sm btn-danger">Sil</a>
+                    <a asp-action="Details" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-info">Detay</a>
+                    <a asp-action="Edit" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-warning ms-1">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-danger ms-1">Sil</a>
                 </td>
             </tr>
         }

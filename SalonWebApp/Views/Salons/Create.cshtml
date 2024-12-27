@@ -1,7 +1,7 @@
 ﻿@model SalonWebApp.Models.Salon
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Yeni Salon Ekle";
 }
 
@@ -60,5 +60,7 @@
 </div>
 
 @section Scripts {
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

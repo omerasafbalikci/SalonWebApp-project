@@ -23,26 +23,23 @@ namespace SalonWebApp.Controllers
         // GET: EmployeeServices
         public async Task<IActionResult> Index()
         {
-            var employeeServices = _context.EmployeeServices.Include(e => e.Employee).Include(e => e.Service);
+            var employeeServices = _context.EmployeeServices
+                .Include(e => e.Employee)
+                .Include(e => e.Service);
             return View(await employeeServices.ToListAsync());
         }
 
         // GET: EmployeeServices/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var employeeService = await _context.EmployeeServices
                 .Include(e => e.Employee)
                 .Include(e => e.Service)
                 .FirstOrDefaultAsync(m => m.EmployeeServiceId == id);
-            if (employeeService == null)
-            {
-                return NotFound();
-            }
+
+            if (employeeService == null) return NotFound();
 
             return View(employeeService);
         }
@@ -60,28 +57,37 @@ namespace SalonWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(EmployeeService employeeService)
         {
-            if (ModelState.IsValid)
+            // Duplicate kontrolü: Aynı EmployeeId + ServiceId kaydı zaten var mı?
+            bool exists = _context.EmployeeServices.Any(es =>
+                es.EmployeeId == employeeService.EmployeeId &&
+                es.ServiceId == employeeService.ServiceId);
+
+            if (exists)
             {
-                _context.Add(employeeService);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", "Bu çalışan için bu servis zaten tanımlı.");
             }
-            return View(employeeService);
+
+            if (!ModelState.IsValid)
+            {
+                // Dropdown listesini tekrar doldur
+                ViewBag.Employees = _context.Employees.ToList();
+                ViewBag.Services = _context.Services.ToList();
+                return View(employeeService);
+            }
+
+            _context.Add(employeeService);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: EmployeeServices/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var employeeService = await _context.EmployeeServices.FindAsync(id);
-            if (employeeService == null)
-            {
-                return NotFound();
-            }
+            if (employeeService == null) return NotFound();
+
             ViewBag.Employees = _context.Employees.ToList();
             ViewBag.Services = _context.Services.ToList();
             return View(employeeService);
@@ -92,50 +98,53 @@ namespace SalonWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, EmployeeService employeeService)
         {
-            if (id != employeeService.EmployeeServiceId)
+            if (id != employeeService.EmployeeServiceId) return NotFound();
+
+            // Duplicate kontrolü: Mevcut kaydı hariç aynı EmployeeId + ServiceId var mı?
+            bool exists = _context.EmployeeServices.Any(es =>
+                es.EmployeeId == employeeService.EmployeeId &&
+                es.ServiceId == employeeService.ServiceId &&
+                es.EmployeeServiceId != employeeService.EmployeeServiceId);
+
+            if (exists)
             {
-                return NotFound();
+                ModelState.AddModelError("", "Bu çalışan için bu servis zaten tanımlı.");
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(employeeService);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EmployeeServiceExists(employeeService.EmployeeServiceId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ViewBag.Employees = _context.Employees.ToList();
+                ViewBag.Services = _context.Services.ToList();
+                return View(employeeService);
             }
-            return View(employeeService);
+
+            try
+            {
+                _context.Update(employeeService);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeeServiceExists(employeeService.EmployeeServiceId))
+                {
+                    return NotFound();
+                }
+                else throw;
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: EmployeeServices/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var employeeService = await _context.EmployeeServices
                 .Include(e => e.Employee)
                 .Include(e => e.Service)
                 .FirstOrDefaultAsync(m => m.EmployeeServiceId == id);
-            if (employeeService == null)
-            {
-                return NotFound();
-            }
+
+            if (employeeService == null) return NotFound();
 
             return View(employeeService);
         }
@@ -149,9 +158,8 @@ namespace SalonWebApp.Controllers
             if (employeeService != null)
             {
                 _context.EmployeeServices.Remove(employeeService);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

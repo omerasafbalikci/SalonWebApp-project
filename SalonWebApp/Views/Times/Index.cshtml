@@ -1,53 +1,41 @@
 ﻿@model IEnumerable<SalonWebApp.Models.Time>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Zaman Dilimleri";
 }
 
-<h1>Index</h1>
+<h2>Zaman Dilimleri</h2>
+<hr />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Yeni Zaman Dilimi Ekle</a>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Selectable)
-            </th>
+            <th>Tarih</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>Seçilebilir mi?</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Selectable)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TimeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TimeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TimeId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.StartTime</td>
+                <td>@item.EndTime</td>
+                <td>@(item.Selectable ? "Evet" : "Hayır")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.TimeId" class="btn btn-info btn-sm">Detay</a>
+                    <a asp-action="Edit" asp-route-id="@item.TimeId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@item.TimeId" class="btn btn-danger btn-sm ms-1">Sil</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,0 +1,21 @@
+﻿@model ErrorViewModel
+@{
+    Layout = User.IsInRole("Admin")
+        ? "~/Views/Shared/_LayoutAdmin.cshtml"
+        : "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Hata";
+}
+
+<h1 class="text-danger">Bir hata oluştu.</h1>
+<p class="text-muted">
+    Lütfen daha sonra tekrar deneyiniz veya destek ekibine başvurunuz.
+</p>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">Anasayfa</a>

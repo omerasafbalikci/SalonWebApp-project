@@ -1,42 +1,45 @@
 ﻿@model SalonWebApp.Models.Service
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Servis Detayı";
 }
 
-<h1>Details</h1>
+<h2>Servis Detayı</h2>
+<hr />
 
-<div>
-    <h4>Service</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salon)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salon.Address)
-        </dd>
-    </dl>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Name</h4>
+        <p class="card-text">
+            <strong>Fiyat:</strong> @Model.Price <br />
+            <strong>Süre:</strong> @Model.Duration <br />
+            <strong>Salon:</strong> @Model.Salon?.Name <br />
+        </p>
+
+        @if (Model.EmployeeServices != null && Model.EmployeeServices.Any())
+        {
+            <h5>Bu Servisi Yapabilen Çalışanlar</h5>
+            <ul>
+                @foreach (var empSrv in Model.EmployeeServices)
+                {
+                    <li>
+                        Çalışan ID: @empSrv.EmployeeId /
+                        @empSrv.Employee?.FirstName @empSrv.Employee?.LastName
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Bu servisi yapabilen henüz bir çalışan kaydı yok.</p>
+        }
+
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ServiceId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.ServiceId" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Delete" asp-route-id="@Model.ServiceId" class="btn btn-danger ms-2">Sil</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
 </div>

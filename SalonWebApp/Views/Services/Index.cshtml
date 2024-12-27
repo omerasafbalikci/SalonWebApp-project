@@ -1,53 +1,41 @@
 ﻿@model IEnumerable<SalonWebApp.Models.Service>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Servis Listesi";
 }
 
-<h1>Index</h1>
+<h2>Servis Listesi</h2>
+<hr />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Yeni Servis Ekle</a>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salon)
-            </th>
+            <th>Servis Adı</th>
+            <th>Fiyat</th>
+            <th>Süre</th>
+            <th>Salon</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salon.Address)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ServiceId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ServiceId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ServiceId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Name</td>
+                <td>@service.Price</td>
+                <td>@service.Duration</td>
+                <td>@service.Salon?.Name</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@service.ServiceId" class="btn btn-info btn-sm">Detay</a>
+                    <a asp-action="Edit" asp-route-id="@service.ServiceId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@service.ServiceId" class="btn btn-danger btn-sm ms-1">Sil</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

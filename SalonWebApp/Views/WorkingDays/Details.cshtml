@@ -1,42 +1,28 @@
 ﻿@model SalonWebApp.Models.WorkingDay
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Çalışma Günü Detayı";
 }
 
-<h1>Details</h1>
+<h2>Çalışma Günü Detayı</h2>
+<hr />
 
-<div>
-    <h4>WorkingDay</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Employee.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
-    </dl>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">
+            @(Model.Employee != null ? (Model.Employee.FirstName + " " + Model.Employee.LastName) : "N/A")
+        </h4>
+        <p class="card-text">
+            <strong>Tarih:</strong> @Model.Date.ToShortDateString() <br />
+            <strong>Başlangıç:</strong> @Model.StartTime <br />
+            <strong>Bitiş:</strong> @Model.EndTime
+        </p>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.WorkingDayId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.WorkingDayId" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Delete" asp-route-id="@Model.WorkingDayId" class="btn btn-danger ms-2">Sil</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Liste</a>
 </div>

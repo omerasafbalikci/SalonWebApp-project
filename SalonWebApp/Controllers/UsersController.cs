@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalonWebApp.Models;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -143,8 +146,8 @@ namespace SalonWebApp.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var hashedPassword = HashPassword(model.Password);
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == hashedPassword);
+            var user = await _context.Users.FirstOrDefaultAsync(u =>
+                            u.Email == model.Email && u.Password == hashedPassword);
 
             if (user == null)
             {
@@ -152,19 +155,42 @@ namespace SalonWebApp.Controllers
                 return View(model);
             }
 
-            HttpContext.Session.SetString("UserId", user.UserId.ToString());
-            HttpContext.Session.SetString("Role", user.Role.ToString());
+            // Cookie tabanlı kimlik oluştur
+            var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+        new Claim(ClaimTypes.Name, user.Email),
+        new Claim(ClaimTypes.Role, user.Role.ToString()) // ADMIN / MEMBER
+    };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                principal,
+                new AuthenticationProperties
+                {
+                    IsPersistent = false,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1)
+                });
+
+            // Session kullanmak isterseniz yine ekleyebilirsiniz, ama asıl login cookie ile
+            // HttpContext.Session.SetString("UserId", user.UserId.ToString());
+            // HttpContext.Session.SetString("UserEmail", user.Email);
 
             return RedirectToAction("Index", "Home");
         }
+
+
 
         // GET: User/Logout
         [Authorize]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Clear();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
+
 
         // GET: Users/Edit/5
         [Authorize]

@@ -58,6 +58,11 @@ namespace SalonWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (time.EndTime <= time.StartTime)
+                {
+                    ModelState.AddModelError("", "EndTime must be greater than StartTime.");
+                }
+
                 _context.Add(time);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -95,6 +100,11 @@ namespace SalonWebApp.Controllers
             {
                 try
                 {
+                    if (time.EndTime <= time.StartTime)
+                    {
+                        ModelState.AddModelError("", "EndTime must be greater than StartTime.");
+                    }
+
                     _context.Update(time);
                     await _context.SaveChangesAsync();
                 }

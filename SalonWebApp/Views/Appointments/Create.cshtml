@@ -1,11 +1,13 @@
 ﻿@model SalonWebApp.Models.Appointment
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = User.IsInRole("Admin")
+        ? "~/Views/Shared/_LayoutAdmin.cshtml"
+        : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Randevu Oluştur";
 }
 
-<h1>Randevu Oluştur</h1>
+<h2>Randevu Oluştur</h2>
 <hr />
 
 <div class="row">
@@ -13,48 +15,47 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @* Kullanıcı ID: Genelde giriş yapmış kullanıcı için otomatik doldurulur.
-               Admin de randevu oluşturuyorsa <select> ile açılabilir. Bu projede arka tarafta setlendiği için
-               isterseniz formdan gizleyebilirsiniz. *@
-            <!--
-            <div class="form-group d-none">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            <!-- Salon -->
+            <div class="mb-3">
+                <label for="SalonId" class="form-label">Salon</label>
+                <select asp-for="SalonId" class="form-select" asp-items="ViewBag.Salons"></select>
             </div>
-            -->
 
-            <div class="form-group">
-                <label asp-for="SalonId" class="control-label">Salon</label>
-                <select asp-for="SalonId" class="form-control" asp-items="ViewBag.Salons"></select>
+            <!-- Service -->
+            <div class="mb-3">
+                <label for="ServiceId" class="form-label">Servis</label>
+                <select asp-for="ServiceId" class="form-select" asp-items="ViewBag.Services"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="ServiceId" class="control-label">Servis</label>
-                <select asp-for="ServiceId" class="form-control" asp-items="ViewBag.Services"></select>
+
+            <!-- Employee -->
+            <div class="mb-3">
+                <label for="EmployeeId" class="form-label">Çalışan</label>
+                <select asp-for="EmployeeId" class="form-select" asp-items="ViewBag.Employees"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="EmployeeId" class="control-label">Çalışan</label>
-                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.Employees"></select>
+
+            <!-- Time -->
+            <div class="mb-3">
+                <label for="TimeId" class="form-label">Zaman Dilimi</label>
+                <select asp-for="TimeId" class="form-select" asp-items="ViewBag.Times"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="TimeId" class="control-label">Saat Dilimi</label>
-                <select asp-for="TimeId" class="form-control" asp-items="ViewBag.Times"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label">Açıklama</label>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Açıklama</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
-            <div class="form-group mt-3">
-                <input type="submit" value="Randevu Oluştur" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Geri</a>
-            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
         </form>
     </div>
 </div>
 
 @section Scripts {
+    @* partial vs render partial, 
+       Duplicate check: use PartialAsync if you want to do @await or code block for RenderPartialAsync *@
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.PartialAsync("_ValidationScriptsPartial");
     }
 }
