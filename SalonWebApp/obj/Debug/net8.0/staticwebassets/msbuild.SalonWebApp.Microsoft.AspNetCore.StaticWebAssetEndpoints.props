@@ -24,17 +24,29 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"5430"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Dec 2024 15:51:08 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/SalonWebApp/images/wp10168229-hair-stylist-wallpapers.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\wp10168229-hair-stylist-wallpapers.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/SalonWebApp/images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.0m7y2txlkv.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"166423"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=\u0022"},{"Name":"Last-Modified","Value":"Sun, 15 Dec 2024 23:20:30 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"0m7y2txlkv"},{"Name":"integrity","Value":"sha256-CIFc\u002BcHOi/83XgDZyfDJSB21\u002BsfS8WlQp0l0xR8Uvyc="},{"Name":"label","Value":"_content/SalonWebApp/images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"134448"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022CIFc\u002BcHOi/83XgDZyfDJSB21\u002BsfS8WlQp0l0xR8Uvyc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 27 Dec 2024 19:52:34 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/SalonWebApp/images/wp10168229-hair-stylist-wallpapers.u5rhdbr2do.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\wp10168229-hair-stylist-wallpapers.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/SalonWebApp/images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"u5rhdbr2do"},{"Name":"integrity","Value":"sha256-wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o="},{"Name":"label","Value":"_content/SalonWebApp/images/wp10168229-hair-stylist-wallpapers.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"166423"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=\u0022"},{"Name":"Last-Modified","Value":"Sun, 15 Dec 2024 23:20:30 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-CIFc\u002BcHOi/83XgDZyfDJSB21\u002BsfS8WlQp0l0xR8Uvyc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"134448"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022CIFc\u002BcHOi/83XgDZyfDJSB21\u002BsfS8WlQp0l0xR8Uvyc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 27 Dec 2024 19:52:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/SalonWebApp/images/white-wallpaper-abstract-7.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\white-wallpaper-abstract-7.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jkg4Kc\u002BqWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"218902"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Jkg4Kc\u002BqWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg=\u0022"},{"Name":"Last-Modified","Value":"Fri, 27 Dec 2024 21:11:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/SalonWebApp/images/white-wallpaper-abstract-7.qcp6ae3mrv.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\white-wallpaper-abstract-7.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qcp6ae3mrv"},{"Name":"integrity","Value":"sha256-Jkg4Kc\u002BqWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg="},{"Name":"label","Value":"_content/SalonWebApp/images/white-wallpaper-abstract-7.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"218902"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Jkg4Kc\u002BqWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg=\u0022"},{"Name":"Last-Modified","Value":"Fri, 27 Dec 2024 21:11:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/SalonWebApp/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>

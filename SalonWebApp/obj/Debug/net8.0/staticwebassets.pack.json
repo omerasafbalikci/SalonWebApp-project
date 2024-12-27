@@ -13,8 +13,12 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
-      "PackagePath": "staticwebassets\\images\\wp10168229-hair-stylist-wallpapers.jpg"
+      "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png",
+      "PackagePath": "staticwebassets\\images\\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png"
+    },
+    {
+      "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\white-wallpaper-abstract-7.jpg",
+      "PackagePath": "staticwebassets\\images\\white-wallpaper-abstract-7.jpg"
     },
     {
       "Id": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\js\\site.js",

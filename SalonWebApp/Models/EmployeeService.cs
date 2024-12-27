@@ -17,7 +17,7 @@ namespace SalonWebApp.Models
             Service = service;
         }
 
-        public required int EmployeeServiceId {  get; set; }
+        public int EmployeeServiceId { get; set; }
 
         [Required]
         public int EmployeeId { get; set; }

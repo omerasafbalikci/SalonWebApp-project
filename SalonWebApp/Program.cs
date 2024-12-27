@@ -36,6 +36,13 @@ builder.Services.AddHttpContextAccessor(); // HttpContext erişimi için gerekli
 
 var app = builder.Build();
 
+// Database Seeding
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<SalonContext>();
+    DatabaseInitializer.Seed(context); // DatabaseInitializer çağrısı
+}
+
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {

@@ -1,6 +1,7 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\images\wp10168229-hair-stylist-wallpapers.jpg
+wwwroot\images\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png
+wwwroot\images\white-wallpaper-abstract-7.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

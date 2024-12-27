@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cjvqP8FSFMoWuoj28l2CvGc6Zyd6G0WVggxYRoByObY=",
+  "Hash": "Mt9v9RAW1uQwz4sEgqgL6DJU0g5sqW23wQlKv2YzUhc=",
   "Source": "SalonWebApp",
   "BasePath": "_content/SalonWebApp",
   "Mode": "Default",
@@ -1361,12 +1361,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
+      "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png",
       "SourceId": "SalonWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\",
       "BasePath": "_content/SalonWebApp",
-      "RelativePath": "images/wp10168229-hair-stylist-wallpapers#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1375,11 +1375,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "u5rhdbr2do",
-      "Integrity": "wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=",
+      "Fingerprint": "0m7y2txlkv",
+      "Integrity": "CIFc+cHOi/83XgDZyfDJSB21+sfS8WlQp0l0xR8Uvyc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png"
+    },
+    {
+      "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\white-wallpaper-abstract-7.jpg",
+      "SourceId": "SalonWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\",
+      "BasePath": "_content/SalonWebApp",
+      "RelativePath": "images/white-wallpaper-abstract-7#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qcp6ae3mrv",
+      "Integrity": "Jkg4Kc+qWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\white-wallpaper-abstract-7.jpg"
     },
     {
       "Identity": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\js\\site.js",
@@ -4986,8 +5007,8 @@
       ]
     },
     {
-      "Route": "images/wp10168229-hair-stylist-wallpapers.jpg",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
+      "Route": "images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.0m7y2txlkv.png",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4996,56 +5017,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "166423"
+          "Value": "134448"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/png"
         },
         {
           "Name": "ETag",
-          "Value": "\"wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=\""
+          "Value": "\"CIFc+cHOi/83XgDZyfDJSB21+sfS8WlQp0l0xR8Uvyc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 15 Dec 2024 23:20:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o="
-        }
-      ]
-    },
-    {
-      "Route": "images/wp10168229-hair-stylist-wallpapers.u5rhdbr2do.jpg",
-      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\wp10168229-hair-stylist-wallpapers.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "166423"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 15 Dec 2024 23:20:30 GMT"
+          "Value": "Fri, 27 Dec 2024 19:52:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5055,15 +5039,134 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "u5rhdbr2do"
+          "Value": "0m7y2txlkv"
         },
         {
           "Name": "label",
-          "Value": "images/wp10168229-hair-stylist-wallpapers.jpg"
+          "Value": "images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o="
+          "Value": "sha256-CIFc+cHOi/83XgDZyfDJSB21+sfS8WlQp0l0xR8Uvyc="
+        }
+      ]
+    },
+    {
+      "Route": "images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "134448"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CIFc+cHOi/83XgDZyfDJSB21+sfS8WlQp0l0xR8Uvyc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 27 Dec 2024 19:52:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CIFc+cHOi/83XgDZyfDJSB21+sfS8WlQp0l0xR8Uvyc="
+        }
+      ]
+    },
+    {
+      "Route": "images/white-wallpaper-abstract-7.jpg",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\white-wallpaper-abstract-7.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "218902"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jkg4Kc+qWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 27 Dec 2024 21:11:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jkg4Kc+qWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg="
+        }
+      ]
+    },
+    {
+      "Route": "images/white-wallpaper-abstract-7.qcp6ae3mrv.jpg",
+      "AssetFile": "C:\\Users\\omera\\source\\repos\\Salon\\SalonWebApp\\wwwroot\\images\\white-wallpaper-abstract-7.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "218902"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jkg4Kc+qWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 27 Dec 2024 21:11:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qcp6ae3mrv"
+        },
+        {
+          "Name": "label",
+          "Value": "images/white-wallpaper-abstract-7.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jkg4Kc+qWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg="
         }
       ]
     },

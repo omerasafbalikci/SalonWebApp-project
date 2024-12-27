@@ -157,11 +157,11 @@ namespace SalonWebApp.Controllers
 
             // Cookie tabanlı kimlik oluştur
             var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-        new Claim(ClaimTypes.Name, user.Email),
-        new Claim(ClaimTypes.Role, user.Role.ToString()) // ADMIN / MEMBER
-    };
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.Email),
+                new Claim(ClaimTypes.Role, user.Role.ToString()) // ADMIN / MEMBER
+            };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
@@ -174,13 +174,19 @@ namespace SalonWebApp.Controllers
                     ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1)
                 });
 
-            // Session kullanmak isterseniz yine ekleyebilirsiniz, ama asıl login cookie ile
-            // HttpContext.Session.SetString("UserId", user.UserId.ToString());
-            // HttpContext.Session.SetString("UserEmail", user.Email);
+            HttpContext.Session.SetString("UserId", user.UserId.ToString());
+            HttpContext.Session.SetString("UserEmail", user.Email);
 
-            return RedirectToAction("Index", "Home");
+            // Kullanıcının rolüne göre yönlendirme
+            if (user.Role == Roles.ADMIN)
+            {
+                return RedirectToAction("IndexAdmin", "Home");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
-
 
 
         // GET: User/Logout

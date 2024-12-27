@@ -18,7 +18,7 @@ namespace SalonWebApp.Models
             EndTime = endTime;
         }
 
-        public required int WorkingDayId { get; set; }
+        public int WorkingDayId { get; set; }
 
         [Required]
         public int EmployeeId { get; set; }

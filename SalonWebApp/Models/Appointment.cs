@@ -24,7 +24,7 @@ namespace SalonWebApp.Models
             Description = description;
         }
 
-        public required int AppointmentId { get; set; }
+        public int AppointmentId { get; set; }
 
         [Required]
         public int UserId { get; set; }

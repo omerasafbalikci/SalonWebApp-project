@@ -18,7 +18,7 @@ namespace SalonWebApp.Models
             Appointments = appointments;
         }
 
-        public required int TimeId { get; set; }
+        public int TimeId { get; set; }
 
         [Required]
         public DateTime Date { get; set; }
@@ -32,7 +32,6 @@ namespace SalonWebApp.Models
         [Required]
         public bool Selectable { get; set; }
 
-        [Required]
-        public ICollection<Appointment> Appointments { get; set; } 
+        public required ICollection<Appointment> Appointments { get; set; }
     }
 }

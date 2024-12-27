@@ -36,23 +36,41 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\wp10168229-hair-stylist-wallpapers.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png'))">
       <SourceType>Package</SourceType>
       <SourceId>SalonWebApp</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SalonWebApp</BasePath>
-      <RelativePath>images/wp10168229-hair-stylist-wallpapers.jpg</RelativePath>
+      <RelativePath>images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>u5rhdbr2do</Fingerprint>
-      <Integrity>wgyf4WFx6O4sqbW9h4nlKmIaDFlS0ITvKtFRxcdse1o=</Integrity>
+      <Fingerprint>0m7y2txlkv</Fingerprint>
+      <Integrity>CIFc+cHOi/83XgDZyfDJSB21+sfS8WlQp0l0xR8Uvyc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\wp10168229-hair-stylist-wallpapers.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\white-wallpaper-abstract-7.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SalonWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SalonWebApp</BasePath>
+      <RelativePath>images/white-wallpaper-abstract-7.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>qcp6ae3mrv</Fingerprint>
+      <Integrity>Jkg4Kc+qWVDgOQY5jl9pYQ8s/DGTXktmY/KjKir6kpg=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\white-wallpaper-abstract-7.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))">
       <SourceType>Package</SourceType>

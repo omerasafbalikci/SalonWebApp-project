@@ -23,7 +23,7 @@ namespace SalonWebApp.Models
             Appointments = appointments;
         }
 
-        public required int SalonId { get; set; }
+        public int SalonId { get; set; }
 
         [Required]
         [StringLength(100)]
