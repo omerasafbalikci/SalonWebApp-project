@@ -77,9 +77,9 @@ namespace SalonWebApp.Controllers
                     Role = Roles.MEMBER
                 };
 
-                _context.Add(user);
+                _context.Add(u);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Users");
             }
             return View(user);
         }
@@ -226,6 +226,51 @@ namespace SalonWebApp.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(user);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var currentUserIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString)) return Forbid();
+            if (!int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                return Forbid();
+            }
+
+            var user = await _context.Users.FindAsync(currentUserId);
+            if (user == null)
+            {
+                return NotFound("Kullanıcı bulunamadı");
+            }
+
+            var oldPasswordHash = HashPassword(model.OldPassword);
+            if (user.Password != oldPasswordHash)
+            {
+                ModelState.AddModelError("", "Eski şifre hatalı.");
+                return View(model);
+            }
+
+            user.Password = HashPassword(model.NewPassword);
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            ViewBag.SuccessMessage = "Şifreniz başarıyla güncellendi.";
+            return View();
         }
 
         // GET: Users/Delete/5

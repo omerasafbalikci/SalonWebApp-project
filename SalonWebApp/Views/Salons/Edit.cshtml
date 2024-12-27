@@ -1,64 +1,57 @@
 ﻿@model SalonWebApp.Models.Salon
 
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Salon Düzenle";
 }
 
-<h1>Edit</h1>
-
-<h4>Salon</h4>
+<h2>Salon Düzenle</h2>
 <hr />
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="SalonId" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Salon Adı</label>
                 <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control"></select>
-                <span asp-validation-for="Type" class="text-danger"></span>
+            <div class="mb-3">
+                <label asp-for="Type" class="form-label">Tür</label>
+                <select asp-for="Type" class="form-select">
+                    <option value="Hairdresser">Kuaför (Bayan)</option>
+                    <option value="Barber">Berber (Erkek)</option>
+                    <option value="Mixed">Karma</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label asp-for="OpenDays" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="OpenDays" class="form-label">Açık Günler</label>
                 <input asp-for="OpenDays" class="form-control" />
-                <span asp-validation-for="OpenDays" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OpeningHour" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="OpeningHour" class="form-label">Açılış Saati</label>
                 <input asp-for="OpeningHour" class="form-control" />
-                <span asp-validation-for="OpeningHour" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ClosingHour" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="ClosingHour" class="form-label">Kapanış Saati</label>
                 <input asp-for="ClosingHour" class="form-control" />
-                <span asp-validation-for="ClosingHour" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label">Adres</label>
                 <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label">Telefon</label>
                 <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
+            <button type="submit" class="btn btn-success">Kaydet</button>
+            <a asp-action="Index" class="btn btn-secondary">İptal</a>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }

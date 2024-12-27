@@ -65,80 +65,145 @@ namespace SalonWebApp.Controllers
         }
 
         // GET: Appointments/Create
-        [Authorize(Roles = "MEMBER, ADMIN")]
+        [Authorize(Roles = "MEMBER,ADMIN")]
         public IActionResult Create()
         {
-            ViewBag.Employees = _context.Employees.ToList();
-            ViewBag.Salons = _context.Salons.ToList();
-            ViewBag.Services = _context.Services.ToList();
-            ViewBag.Times = _context.Times.Where(t => t.Selectable).ToList();
+            var salons = _context.Salons.ToList();
+            var services = _context.Services.ToList();
+            var employees = _context.Employees.ToList();
+            var times = _context.Times.Where(t => t.Selectable).ToList();
+
+            ViewBag.Salons = new SelectList(salons, "SalonId", "Name");
+            ViewBag.Services = new SelectList(services, "ServiceId", "Name");
+            ViewBag.Employees = new SelectList(employees, "EmployeeId", "FirstName");
+            ViewBag.Times = new SelectList(times, "TimeId", "StartTime");
+
             return View();
         }
 
         // POST: Appointments/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "MEMBER, ADMIN")]
+        [Authorize(Roles = "MEMBER,ADMIN")]
         public async Task<IActionResult> Create(Appointment appointment)
         {
-            if (ModelState.IsValid)
+            var salon = await _context.Salons.FindAsync(appointment.SalonId);
+            if (salon == null)
             {
-                bool hasConflict = await _context.Appointments.AnyAsync(a => a.EmployeeId == appointment.EmployeeId && a.TimeId == appointment.TimeId);
-                if (hasConflict)
+                ModelState.AddModelError("", "Seçilen salon geçerli değil.");
+            }
+            else
+            {
+                var selectedTime = await _context.Times.FindAsync(appointment.TimeId);
+                if (selectedTime == null)
                 {
-                    ModelState.AddModelError("", "Bu çalışan bu saat aralığında başka bir randevuya sahip. Lütfen farklı bir saat veya çalışan seçin.");
-                    ViewBag.Employees = _context.Employees.ToList();
-                    ViewBag.Salons = _context.Salons.ToList();
-                    ViewBag.Services = _context.Services.ToList();
-                    ViewBag.Times = _context.Times.Where(t => t.Selectable).ToList();
-                    return View(appointment);
+                    ModelState.AddModelError("", "Geçerli bir saat dilimi seçiniz.");
                 }
-
-                var service = await _context.Services.FindAsync(appointment.ServiceId);
-                if (service == null)
+                else
                 {
-                    ModelState.AddModelError("", "Geçersiz servis seçimi.");
-                    return View(appointment);
+                    var appointmentDateTime = selectedTime.Date.Date + selectedTime.StartTime;
+                    if (!salon.IsOpen(appointmentDateTime))
+                    {
+                        ModelState.AddModelError("", $"Salon bu tarih ve saatte kapalı: {appointmentDateTime}");
+                    }
                 }
-
-                var currentUserIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                if (!int.TryParse(currentUserIdString, out int currentUserId))
-                {
-                    return Forbid();
-                }
-                appointment.UserId = currentUserId;
-
-                _context.Appointments.Add(appointment);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.Employees = _context.Employees.ToList();
-            ViewBag.Salons = _context.Salons.ToList();
-            ViewBag.Services = _context.Services.ToList();
-            ViewBag.Times = _context.Times.Where(t => t.Selectable).ToList();
-            return View(appointment);
+            var service = await _context.Services.FindAsync(appointment.ServiceId);
+            if (service == null || service.SalonId != appointment.SalonId)
+            {
+                ModelState.AddModelError("", "Seçilen servis bu salonda tanımlı değil veya geçersiz servis.");
+            }
+
+            bool canEmployeeDoService = await _context.EmployeeServices
+                .AnyAsync(es => es.EmployeeId == appointment.EmployeeId && es.ServiceId == appointment.ServiceId);
+            if (!canEmployeeDoService)
+            {
+                ModelState.AddModelError("", "Bu çalışan seçilen servisi gerçekleştiremiyor.");
+            }
+
+            var employee = await _context.Employees.Include(e => e.WorkingDays).FirstOrDefaultAsync(e => e.EmployeeId == appointment.EmployeeId);
+            if (employee == null)
+            {
+                ModelState.AddModelError("", "Geçersiz çalışan seçimi.");
+            }
+            else
+            {
+                var selectedTime = await _context.Times.FindAsync(appointment.TimeId);
+                if (selectedTime != null)
+                {
+                    DateTime apptDate = selectedTime.Date.Date;
+                    var workingDay = employee.WorkingDays
+                        .FirstOrDefault(w => w.Date.Date == apptDate);
+
+                    if (workingDay == null)
+                    {
+                        ModelState.AddModelError("", "Çalışan bu tarihte çalışmıyor.");
+                    }
+                    else
+                    {
+                        if (!(selectedTime.StartTime >= workingDay.StartTime &&
+                              selectedTime.EndTime <= workingDay.EndTime))
+                        {
+                            ModelState.AddModelError("", "Çalışan seçilen saat aralığında çalışmıyor.");
+                        }
+                    }
+                }
+            }
+            bool hasConflict = await _context.Appointments.AnyAsync(a => a.EmployeeId == appointment.EmployeeId && a.TimeId == appointment.TimeId);
+            if (hasConflict)
+            {
+                ModelState.AddModelError("", "Bu çalışan bu saat aralığında başka bir randevuya sahip.");
+            }
+
+            var currentUserIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                return Forbid();
+            }
+
+            appointment.UserId = currentUserId;
+
+            if (!ModelState.IsValid)
+            {
+                var salons = _context.Salons.ToList();
+                var services = _context.Services.ToList();
+                var employees = _context.Employees.ToList();
+                var times = _context.Times.Where(t => t.Selectable).ToList();
+
+                ViewBag.Salons = new SelectList(salons, "SalonId", "Name", appointment.SalonId);
+                ViewBag.Services = new SelectList(services, "ServiceId", "Name", appointment.ServiceId);
+                ViewBag.Employees = new SelectList(employees, "EmployeeId", "FirstName", appointment.EmployeeId);
+                ViewBag.Times = new SelectList(times, "TimeId", "StartTime", appointment.TimeId);
+
+                return View(appointment);
+            }
+
+            _context.Appointments.Add(appointment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Appointments/Edit/5
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var appointment = await _context.Appointments.FindAsync(id);
-            if (appointment == null)
-            {
-                return NotFound();
-            }
-            ViewBag.Employees = _context.Employees.ToList();
-            ViewBag.Salons = _context.Salons.ToList();
-            ViewBag.Services = _context.Services.ToList();
-            ViewBag.Times = _context.Times.Where(t => t.Selectable).ToList();
+            if (appointment == null) return NotFound();
+
+            var salons = _context.Salons.ToList();
+            var services = _context.Services.ToList();
+            var employees = _context.Employees.ToList();
+            var times = _context.Times.Where(t => t.Selectable).ToList();
+
+            ViewBag.Salons = new SelectList(salons, "SalonId", "Name", appointment.SalonId);
+            ViewBag.Services = new SelectList(services, "ServiceId", "Name", appointment.ServiceId);
+            ViewBag.Employees = new SelectList(employees, "EmployeeId", "FirstName", appointment.EmployeeId);
+            ViewBag.Times = new SelectList(times, "TimeId", "StartTime", appointment.TimeId);
+
             return View(appointment);
         }
 
@@ -148,46 +213,44 @@ namespace SalonWebApp.Controllers
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Edit(int id, Appointment appointment)
         {
-            if (id != appointment.AppointmentId)
+            if (id != appointment.AppointmentId) return NotFound();
+
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                var salons = _context.Salons.ToList();
+                var services = _context.Services.ToList();
+                var employees = _context.Employees.ToList();
+                var times = _context.Times.Where(t => t.Selectable).ToList();
+
+                ViewBag.Salons = new SelectList(salons, "SalonId", "Name", appointment.SalonId);
+                ViewBag.Services = new SelectList(services, "ServiceId", "Name", appointment.ServiceId);
+                ViewBag.Employees = new SelectList(employees, "EmployeeId", "FirstName", appointment.EmployeeId);
+                ViewBag.Times = new SelectList(times, "TimeId", "StartTime", appointment.TimeId);
+
+                return View(appointment);
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(appointment);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AppointmentExists(appointment.AppointmentId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(appointment);
+                await _context.SaveChangesAsync();
             }
-            ViewBag.Employees = _context.Employees.ToList();
-            ViewBag.Salons = _context.Salons.ToList();
-            ViewBag.Services = _context.Services.ToList();
-            ViewBag.Times = _context.Times.Where(t => t.Selectable).ToList();
-            return View(appointment);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AppointmentExists(appointment.AppointmentId))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Appointments/Delete/5
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var appointment = await _context.Appointments
                 .Include(a => a.Employee)
@@ -196,10 +259,8 @@ namespace SalonWebApp.Controllers
                 .Include(a => a.Time)
                 .Include(a => a.User)
                 .FirstOrDefaultAsync(m => m.AppointmentId == id);
-            if (appointment == null)
-            {
-                return NotFound();
-            }
+
+            if (appointment == null) return NotFound();
 
             return View(appointment);
         }
@@ -214,9 +275,8 @@ namespace SalonWebApp.Controllers
             if (appointment != null)
             {
                 _context.Appointments.Remove(appointment);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class CreateUser
     {
+        public CreateUser()
+        {
+        }
+
         public CreateUser(string firstName, string lastName, string password, string confirmPassword, string email, string phoneNumber, Gender gender)
         {
             FirstName = firstName;

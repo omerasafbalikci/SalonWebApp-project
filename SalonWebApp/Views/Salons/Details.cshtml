@@ -1,60 +1,54 @@
 ﻿@model SalonWebApp.Models.Salon
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Salon Detayı";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Salon</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OpenDays)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OpenDays)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OpeningHour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OpeningHour)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ClosingHour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ClosingHour)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-    </dl>
+<h2>Salon Detayı</h2>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Name (@Model.Type)</h4>
+        <p class="card-text">
+            <strong>Adres:</strong> @Model.Address <br />
+            <strong>Telefon:</strong> @Model.Phone <br />
+            <strong>Çalışma Saatleri:</strong> @Model.OpeningHour - @Model.ClosingHour<br />
+            <strong>Açık Günler:</strong> @Model.OpenDays
+        </p>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.SalonId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<hr />
+
+@if (Model.Employees != null && Model.Employees.Any())
+{
+    <h5>Bu Salondaki Çalışanlar:</h5>
+    <ul>
+        @foreach (var emp in Model.Employees)
+        {
+            <li>@emp.FirstName @emp.LastName</li>
+        }
+    </ul>
+}
+
+@if (Model.Services != null && Model.Services.Any())
+{
+    <h5>Verilen Servisler:</h5>
+    <ul>
+        @foreach (var srv in Model.Services)
+        {
+            <li>@srv.Name (@srv.Price.ToString("C")) - Süre: @srv.Duration</li>
+        }
+    </ul>
+}
+
+<div class="mt-3">
+    @if (User.IsInRole("ADMIN"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.SalonId" class="btn btn-warning">Düzenle</a>
+        <a asp-action="Delete" asp-route-id="@Model.SalonId" class="btn btn-danger">Sil</a>
+        <span class="mx-2"> | </span>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
 </div>

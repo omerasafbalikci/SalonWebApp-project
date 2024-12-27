@@ -1,71 +1,48 @@
 ﻿@model IEnumerable<SalonWebApp.Models.Salon>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Salon Listesi";
 }
 
-<h1>Index</h1>
+<h2>Salon Listesi</h2>
+<hr />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenDays)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpeningHour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClosingHour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
+            <th>Adı</th>
+            <th>Türü</th>
+            <th>Adres</th>
+            <th>Telefon</th>
+            <th>Çalışma Saatleri</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpenDays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpeningHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClosingHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SalonId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SalonId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SalonId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var salon in Model)
+        {
+            <tr>
+                <td>@salon.Name</td>
+                <td>@salon.Type</td>
+                <td>@salon.Address</td>
+                <td>@salon.Phone</td>
+                <td>@salon.OpeningHour - @salon.ClosingHour</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@salon.SalonId" class="btn btn-info btn-sm">Detay</a>
+
+                    @if (User.IsInRole("ADMIN"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@salon.SalonId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
+                        <a asp-action="Delete" asp-route-id="@salon.SalonId" class="btn btn-danger btn-sm ms-1">Sil</a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@if (User.IsInRole("ADMIN"))
+{
+    <a asp-action="Create" class="btn btn-primary">Yeni Salon Ekle</a>
+}

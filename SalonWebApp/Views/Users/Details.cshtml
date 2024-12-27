@@ -1,60 +1,40 @@
 ﻿@model SalonWebApp.Models.User
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Kullanıcı Detayı";
 }
 
-<h1>Details</h1>
+<h2>Kullanıcı Detayı</h2>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.FirstName @Model.LastName (@Model.Role)</h4>
+        <p>
+            <strong>Email:</strong> @Model.Email <br />
+            <strong>Telefon:</strong> @Model.PhoneNumber <br />
+            <strong>Cinsiyet:</strong> @Model.Gender <br />
+        </p>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Role)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Role)
-        </dd>
-    </dl>
+        @if (Model.Appointments != null && Model.Appointments.Any())
+        {
+            <h5>Aldığı Randevular</h5>
+            <ul>
+                @foreach (var app in Model.Appointments)
+                {
+                    <li>Randevu ID: @app.AppointmentId, Salon: @app.Salon?.Name, Servis: @app.Service?.Name</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Henüz randevu kaydı bulunmuyor.</p>
+        }
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.UserId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.UserId" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Delete" asp-route-id="@Model.UserId" class="btn btn-danger ms-2">Sil</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
 </div>

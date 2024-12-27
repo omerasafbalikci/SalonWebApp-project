@@ -1,48 +1,72 @@
 ﻿@model SalonWebApp.Models.Employee
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Çalışan Detayı";
 }
 
-<h1>Details</h1>
+<h2>Çalışan Detayı</h2>
+<hr />
 
-<div>
-    <h4>Employee</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salon)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salon.Address)
-        </dd>
-    </dl>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.FirstName @Model.LastName</h4>
+        <p class="card-text">
+            <strong>Maaş:</strong> @Model.Salary <br />
+            <strong>Telefon:</strong> @Model.Phone <br />
+            <strong>Salon:</strong> @Model.Salon?.Name <br />
+        </p>
+        <h5>Uzmanlık (EmployeeServices)</h5>
+        @if (Model.EmployeeServices != null && Model.EmployeeServices.Any())
+        {
+            <ul>
+                @foreach (var es in Model.EmployeeServices)
+                {
+                    <li>Servis ID: @es.ServiceId</li>
+                    @* İsterseniz Service.Name göstermek için es.Service?.Name *@
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Henüz bir uzmanlık alanı eklenmemiş.</p>
+        }
+
+        <h5>Çalışma Günleri (WorkingDays)</h5>
+        @if (Model.WorkingDays != null && Model.WorkingDays.Any())
+        {
+            <ul>
+                @foreach (var wd in Model.WorkingDays)
+                {
+                    <li>@wd.Date.ToShortDateString() / @wd.StartTime - @wd.EndTime</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Henüz çalışma saatleri tanımlanmamış.</p>
+        }
+
+        <h5>Randevular (Appointments)</h5>
+        @if (Model.Appointments != null && Model.Appointments.Any())
+        {
+            <ul>
+                @foreach (var app in Model.Appointments)
+                {
+                    <li>Randevu ID: @app.AppointmentId, KullanıcıID: @app.UserId</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Henüz randevu bulunmuyor.</p>
+        }
+    </div>
 </div>
+
+<hr />
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.EmployeeId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.EmployeeId" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Delete" asp-route-id="@Model.EmployeeId" class="btn btn-danger ms-2">Sil</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
 </div>

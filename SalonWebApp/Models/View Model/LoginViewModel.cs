@@ -4,6 +4,10 @@ namespace SalonWebApp.Models
 {
     public class LoginViewModel
     {
+        public LoginViewModel()
+        {
+        }
+
         public LoginViewModel(string email, string password)
         {
             Email = email;
