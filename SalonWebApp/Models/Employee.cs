@@ -42,11 +42,10 @@ namespace SalonWebApp.Models
         [Required]
         public int SalonId { get; set; }
 
-        [Required]
-        public Salon Salon { get; set; }
+        public Salon? Salon { get; set; }
 
-        public required ICollection<EmployeeService> EmployeeServices { get; set; }
-        public required ICollection<WorkingDay> WorkingDays { get; set; }
-        public required ICollection<Appointment> Appointments { get; set; }
+        public ICollection<EmployeeService> EmployeeServices { get; set; }
+        public ICollection<WorkingDay> WorkingDays { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

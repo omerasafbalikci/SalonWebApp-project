@@ -51,9 +51,9 @@ namespace SalonWebApp.Models
         [Phone]
         public string Phone { get; set; }
 
-        public required ICollection<Employee> Employees { get; set; }
-        public required ICollection<Service> Services { get; set; }
-        public required ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Employee> Employees { get; set; }
+        public ICollection<Service> Services { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
 
         public bool IsOpen(DateTime dateTime)
         {

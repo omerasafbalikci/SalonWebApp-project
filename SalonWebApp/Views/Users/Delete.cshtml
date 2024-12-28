@@ -5,15 +5,23 @@
     ViewData["Title"] = "Kullanıcı Sil";
 }
 
-<h2>Kullanıcı Sil</h2>
-<hr />
+<h2 class="text-center mb-4">Kullanıcı Sil</h2>
 
-<div class="alert alert-danger">
-    <strong>@Model.FirstName @Model.LastName</strong> adlı kullanıcıyı silmek istediğinizden emin misiniz?
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm border-danger" style="width: 28rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title text-danger">Silme İşlemini Onayla</h5>
+            <p>
+                <strong>@Model.FirstName @Model.LastName</strong> adlı kullanıcıyı silmek istediğinizden emin misiniz?
+            </p>
+            <p class="text-muted">Bu işlem geri alınamaz.</p>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="UserId" />
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-danger btn-sm me-2">Sil</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">Geri</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
-<form asp-action="Delete">
-    <input type="hidden" asp-for="UserId" />
-    <button type="submit" class="btn btn-danger">Sil</button>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
-</form>

@@ -7,6 +7,7 @@ public static class DatabaseInitializer
 {
     public static void Seed(SalonContext context)
     {
+        ClearTables(context);
         context.Database.Migrate();
 
         if (!context.Users.Any(u => u.Email == "b221210083@sakarya.edu.tr"))
@@ -27,31 +28,26 @@ public static class DatabaseInitializer
             context.Users.Add(adminUser);
         }
 
-        // 10 salon ekle
-        if (!context.Salons.Any())
+        if (!context.Users.Any(u => u.Email == "omerasaf1899@gmail.com"))
         {
-            for (int i = 1; i <= 10; i++)
+            string hashedPassword = HashPassword("123456789");
+
+            var memberUser = new User
             {
-                context.Salons.Add(new Salon
-                {
-                    Name = $"Salon {i}",
-                    Type = SalonType.Barber,
-                    OpenDays = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
-                    OpeningHour = new TimeSpan(9, 0, 0),
-                    ClosingHour = new TimeSpan(20, 0, 0),
-                    Address = $"Adres {i}",
-                    Phone = $"12345678{i}",
-                    Employees = new List<Employee>(),
-                    Services = new List<Service>(),
-                    Appointments = new List<Appointment>()
-                });
-            }
+                FirstName = "Ömer Asaf",
+                LastName = "Balıkçı",
+                Email = "omerasaf1899@gmail.com",
+                Password = hashedPassword,
+                PhoneNumber = "1234567890",
+                Gender = Gender.MALE,
+                Role = Roles.MEMBER
+            };
+
+            context.Users.Add(memberUser);
         }
 
-        // 20 çalışan ekle ve her 2 çalışan bir salona ait olsun
         if (!context.Employees.Any())
         {
-            // Önce salonların var olduğundan emin olun
             if (!context.Salons.Any())
             {
                 for (int i = 1; i <= 10; i++)
@@ -70,16 +66,14 @@ public static class DatabaseInitializer
                         Appointments = new List<Appointment>()
                     });
                 }
-                context.SaveChanges(); // Salonları ekledikten sonra kaydedin
+                context.SaveChanges();
             }
 
-            // Salonları listeleyin
             var salons = context.Salons.ToList();
 
-            // Çalışanları ekleyin
             for (int i = 1; i <= 20; i++)
             {
-                var salon = salons[(i - 1) / 2]; // Her 2 çalışan bir salon
+                var salon = salons[(i - 1) / 2];
                 context.Employees.Add(new Employee
                 {
                     FirstName = $"Çalışan {i}",
@@ -93,28 +87,26 @@ public static class DatabaseInitializer
                 });
             }
 
-            context.SaveChanges(); // Çalışanları ekledikten sonra kaydedin
+            context.SaveChanges();
         }
 
-
-        // 10 servis ekle
         if (!context.Services.Any())
         {
             var salons = context.Salons.ToList();
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 20; i++)
             {
                 context.Services.Add(new Service
                 {
                     Name = $"Servis {i}",
                     Price = 50 + i * 10,
-                    Duration = new TimeSpan(0, 30, 0),
-                    SalonId = salons[i % salons.Count].SalonId, // Servisleri salonlara rastgele dağıt
+                    Duration = new TimeSpan(1, 0, 0),
+                    SalonId = salons[i % salons.Count].SalonId,
                     EmployeeServices = new List<EmployeeService>()
                 });
             }
+            context.SaveChanges();
         }
 
-        // Her çalışana 1 veya 2 servis atama
         if (!context.EmployeeServices.Any())
         {
             var employees = context.Employees.ToList();
@@ -123,8 +115,9 @@ public static class DatabaseInitializer
 
             foreach (var employee in employees)
             {
-                int serviceCount = random.Next(1, 3); // 1 veya 2 servis
+                int serviceCount = random.Next(1, 3);
                 var assignedServices = services.OrderBy(x => random.Next()).Take(serviceCount).ToList();
+
                 foreach (var service in assignedServices)
                 {
                     context.EmployeeServices.Add(new EmployeeService
@@ -134,12 +127,13 @@ public static class DatabaseInitializer
                     });
                 }
             }
+
+            context.SaveChanges();
         }
 
-        // 1 saat arayla tüm saat dilimlerini ekle
         if (!context.Times.Any())
         {
-            for (int i = 9; i <= 19; i++) // 09:00 - 20:00 saatleri
+            for (int i = 9; i <= 19; i++)
             {
                 context.Times.Add(new Time
                 {
@@ -152,13 +146,12 @@ public static class DatabaseInitializer
             }
         }
 
-        // Çalışma günleri ekle ve çalışanlara ata
         if (!context.WorkingDays.Any())
         {
             var employees = context.Employees.ToList();
             foreach (var employee in employees)
             {
-                for (int i = 0; i < 5; i++) // Haftanın 5 günü çalışma
+                for (int i = 0; i < 5; i++)
                 {
                     context.WorkingDays.Add(new WorkingDay
                     {
@@ -181,5 +174,20 @@ public static class DatabaseInitializer
             var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
             return BitConverter.ToString(bytes).Replace("-", "").ToLower();
         }
+    }
+
+    private static void ClearTables(SalonContext context)
+    {
+        // Tablo temizleme işlemleri
+        context.EmployeeServices.RemoveRange(context.EmployeeServices);
+        context.WorkingDays.RemoveRange(context.WorkingDays);
+        context.Times.RemoveRange(context.Times);
+        context.Appointments.RemoveRange(context.Appointments);
+        context.Employees.RemoveRange(context.Employees);
+        context.Services.RemoveRange(context.Services);
+        context.Salons.RemoveRange(context.Salons);
+        context.Users.RemoveRange(context.Users);
+
+        context.SaveChanges(); // Tabloları temizledikten sonra kaydedin
     }
 }

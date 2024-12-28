@@ -22,13 +22,11 @@ namespace SalonWebApp.Models
         [Required]
         public int EmployeeId { get; set; }
 
-        [Required]
-        public Employee Employee { get; set; }
+        public Employee? Employee { get; set; }
 
         [Required]
         public int ServiceId { get; set; }
 
-        [Required]
-        public Service Service { get; set; }
+        public Service? Service { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace SalonWebApp.Models
         public int EmployeeId { get; set; }
 
         [Required]
-        public Employee Employee { get; set; }
+        public Employee? Employee { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

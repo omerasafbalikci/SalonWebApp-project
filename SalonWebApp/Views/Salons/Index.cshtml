@@ -1,50 +1,59 @@
 ﻿@model IEnumerable<SalonWebApp.Models.Salon>
 
 @{
-    Layout = User.IsInRole("Admin")
+    Layout = User.IsInRole(Roles.ADMIN.ToString())
         ? "~/Views/Shared/_LayoutAdmin.cshtml"
         : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Salon Listesi";
 }
 
-<h2>Salon Listesi</h2>
+<h2 class="text-center">Salon Listesi</h2>
 <hr />
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Adı</th>
-            <th>Türü</th>
-            <th>Adres</th>
-            <th>Telefon</th>
-            <th>Çalışma Saatleri</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var salon in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-bordered table-sm table-hover">
+        <thead class="table-light">
             <tr>
-                <td>@salon.Name</td>
-                <td>@salon.Type</td>
-                <td>@salon.Address</td>
-                <td>@salon.Phone</td>
-                <td>@salon.OpeningHour - @salon.ClosingHour</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@salon.SalonId" class="btn btn-info btn-sm">Detay</a>
-
-                    @if (User.IsInRole("ADMIN"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@salon.SalonId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
-                        <a asp-action="Delete" asp-route-id="@salon.SalonId" class="btn btn-danger btn-sm ms-1">Sil</a>
-                    }
-                </td>
+                <th>Adı</th>
+                <th>Türü</th>
+                <th>Adres</th>
+                <th>Telefon</th>
+                <th>Çalışma Saatleri</th>
+                <th style="width: 250px;">İşlemler</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var salon in Model)
+            {
+                <tr>
+                    <td>@salon.Name</td>
+                    <td>@salon.Type</td>
+                    <td>@salon.Address</td>
+                    <td>@salon.Phone</td>
+                    <td>@salon.OpeningHour - @salon.ClosingHour</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-action="Details" asp-route-id="@salon.SalonId" class="btn btn-info btn-sm me-1">Detay</a>
+                            }
+
+                            @if (User.IsInRole("ADMIN"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@salon.SalonId" class="btn btn-warning btn-sm me-1">Düzenle</a>
+                                <a asp-action="Delete" asp-route-id="@salon.SalonId" class="btn btn-danger btn-sm">Sil</a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @if (User.IsInRole("ADMIN"))
 {
-    <a asp-action="Create" class="btn btn-primary">Yeni Salon Ekle</a>
+    <div class="text-center mt-3">
+        <a asp-action="Create" class="btn btn-primary">Yeni Salon Ekle</a>
+    </div>
 }

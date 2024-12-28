@@ -5,45 +5,55 @@
     ViewData["Title"] = "Randevu Düzenle";
 }
 
-<h2>Randevu Düzenle</h2>
-<hr />
+<h2 class="text-center mb-4">Randevu Düzenle</h2>
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="AppointmentId" />
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm" style="width: 24rem;">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="AppointmentId" />
 
-            <div class="mb-3">
-                <label for="SalonId" class="form-label">Salon</label>
-                <select asp-for="SalonId" class="form-select" asp-items="ViewBag.Salons"></select>
-            </div>
-            <div class="mb-3">
-                <label for="ServiceId" class="form-label">Servis</label>
-                <select asp-for="ServiceId" class="form-select" asp-items="ViewBag.Services"></select>
-            </div>
-            <div class="mb-3">
-                <label for="EmployeeId" class="form-label">Çalışan</label>
-                <select asp-for="EmployeeId" class="form-select" asp-items="ViewBag.Employees"></select>
-            </div>
-            <div class="mb-3">
-                <label for="TimeId" class="form-label">Zaman Dilimi</label>
-                <select asp-for="TimeId" class="form-select" asp-items="ViewBag.Times"></select>
-            </div>
+                <!-- Salon -->
+                <div class="mb-3">
+                    <label for="SalonId" class="form-label">Salon</label>
+                    <select asp-for="SalonId" class="form-select form-select-sm" asp-items="ViewBag.Salons"></select>
+                </div>
 
-            <div class="mb-3">
-                <label asp-for="Description" class="form-label">Açıklama</label>
-                <input asp-for="Description" class="form-control" />
-            </div>
+                <!-- Servis -->
+                <div class="mb-3">
+                    <label for="ServiceId" class="form-label">Servis</label>
+                    <select asp-for="ServiceId" class="form-select form-select-sm" asp-items="ViewBag.Services"></select>
+                </div>
 
-            <button type="submit" class="btn btn-success">Kaydet</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
-        </form>
+                <!-- Çalışan -->
+                <div class="mb-3">
+                    <label for="EmployeeId" class="form-label">Çalışan</label>
+                    <select asp-for="EmployeeId" class="form-select form-select-sm" asp-items="ViewBag.Employees"></select>
+                </div>
+
+                <!-- Zaman Dilimi -->
+                <div class="mb-3">
+                    <label for="TimeId" class="form-label">Zaman Dilimi</label>
+                    <select asp-for="TimeId" class="form-select form-select-sm" asp-items="ViewBag.Times"></select>
+                </div>
+
+                <!-- Açıklama -->
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">Açıklama</label>
+                    <input asp-for="Description" class="form-control form-control-sm" placeholder="Randevu ile ilgili açıklama girin" />
+                </div>
+
+                <!-- Butonlar -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success btn-sm">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">İptal</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 @section Scripts {
-    @{
-        await Html.PartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.PartialAsync("_ValidationScriptsPartial");}
 }

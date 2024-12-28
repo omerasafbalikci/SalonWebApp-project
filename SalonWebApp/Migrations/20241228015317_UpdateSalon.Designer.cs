@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalonWebApp.Models;
 
@@ -11,9 +12,11 @@ using SalonWebApp.Models;
 namespace SalonWebApp.Migrations
 {
     [DbContext(typeof(SalonContext))]
-    partial class SalonContextModelSnapshot : ModelSnapshot
+    [Migration("20241228015317_UpdateSalon")]
+    partial class UpdateSalon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +34,6 @@ namespace SalonWebApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentId"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmployeeId")
@@ -298,7 +300,7 @@ namespace SalonWebApp.Migrations
                         .IsRequired();
 
                     b.HasOne("SalonWebApp.Models.Service", "Service")
-                        .WithMany("Appointments")
+                        .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -398,8 +400,6 @@ namespace SalonWebApp.Migrations
 
             modelBuilder.Entity("SalonWebApp.Models.Service", b =>
                 {
-                    b.Navigation("Appointments");
-
                     b.Navigation("EmployeeServices");
                 });
 

@@ -1,39 +1,41 @@
 ﻿@model SalonWebApp.Models.LoginViewModel
 
 @{
-    Layout = User.IsInRole("Admin")
+    Layout = User.IsInRole(Roles.ADMIN.ToString())
         ? "~/Views/Shared/_LayoutAdmin.cshtml"
         : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Giriş Yap";
 }
 
-<h2>Giriş Yap</h2>
-<hr />
+<h2 class="text-center mb-4">Giriş Yap</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm" style="width: 22rem;">
+        <div class="card-body">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label">Email</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Password" class="form-label">Parola</label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control form-control-sm" placeholder="Email adresinizi girin" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Giriş</button>
-            <a asp-action="CreateMember" class="btn btn-secondary ms-2">Üye Ol</a>
-        </form>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Parola</label>
+                    <input asp-for="Password" type="password" class="form-control form-control-sm" placeholder="Parolanızı girin" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary btn-sm">Giriş</button>
+                    <a asp-action="CreateMember" class="btn btn-secondary btn-sm">Üye Ol</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

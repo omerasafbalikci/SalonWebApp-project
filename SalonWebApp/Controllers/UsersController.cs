@@ -188,15 +188,14 @@ namespace SalonWebApp.Controllers
             }
         }
 
-
         // GET: User/Logout
         [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-
 
         // GET: Users/Edit/5
         [Authorize]
@@ -220,7 +219,15 @@ namespace SalonWebApp.Controllers
                 return Forbid();
             }
 
-            if (User.IsInRole("ADMIN") && user.UserId != currentUserId) return Forbid();
+            if (!User.IsInRole("ADMIN") && user.UserId != currentUserId)
+            {
+                return Forbid();
+            }
+
+            if (!User.IsInRole("ADMIN"))
+            {
+                user.Role = null; // Normal kullanıcılar için rol değişikliğini devre dışı bırakıyoruz
+            }
 
             return View(user);
         }
@@ -240,7 +247,17 @@ namespace SalonWebApp.Controllers
             {
                 try
                 {
-                    user.Password = HashPassword(user.Password);
+                    // Normal kullanıcılar için şifre ve rol değişikliğini engelliyoruz
+                    if (!User.IsInRole("ADMIN"))
+                    {
+                        var existingUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+                        if (existingUser != null)
+                        {
+                            user.Role = existingUser.Role; // Eski rol değerini koruyoruz
+                            user.Password = existingUser.Password; // Şifre değişikliğini engelliyoruz
+                        }
+                    }
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }

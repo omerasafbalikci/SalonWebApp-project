@@ -42,8 +42,7 @@ namespace SalonWebApp.Models
         [Required]
         public Gender Gender { get; set; }
 
-        [Required]
-        public Roles Role { get; set; }
+        public Roles? Role { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
     }

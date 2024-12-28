@@ -1,61 +1,182 @@
 ﻿@model SalonWebApp.Models.Appointment
 
 @{
-    Layout = User.IsInRole("Admin")
+    Layout = User.IsInRole(Roles.ADMIN.ToString())
         ? "~/Views/Shared/_LayoutAdmin.cshtml"
         : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Randevu Oluştur";
 }
 
-<h2>Randevu Oluştur</h2>
-<hr />
+<h2 class="text-center mb-4">Randevu Oluştur</h2>
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm" style="width: 24rem;">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
-            <!-- Salon -->
-            <div class="mb-3">
-                <label for="SalonId" class="form-label">Salon</label>
-                <select asp-for="SalonId" class="form-select" asp-items="ViewBag.Salons"></select>
-            </div>
+                <!-- Salon -->
+                <div class="mb-3">
+                    <label for="SalonId" class="form-label">Salon</label>
+                    <select asp-for="SalonId" class="form-select form-select-sm"
+                            asp-items="ViewBag.Salons" id="SalonId" required>
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="SalonId" class="text-danger"></span>
+                </div>
 
-            <!-- Service -->
-            <div class="mb-3">
-                <label for="ServiceId" class="form-label">Servis</label>
-                <select asp-for="ServiceId" class="form-select" asp-items="ViewBag.Services"></select>
-            </div>
+                <!-- Service -->
+                <div class="mb-3">
+                    <label for="ServiceId" class="form-label">Servis</label>
+                    <select asp-for="ServiceId" class="form-select form-select-sm"
+                            asp-items="ViewBag.Services" id="ServiceId" required>
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="ServiceId" class="text-danger"></span>
+                </div>
 
-            <!-- Employee -->
-            <div class="mb-3">
-                <label for="EmployeeId" class="form-label">Çalışan</label>
-                <select asp-for="EmployeeId" class="form-select" asp-items="ViewBag.Employees"></select>
-            </div>
+                <!-- Employee -->
+                <div class="mb-3">
+                    <label for="EmployeeId" class="form-label">Çalışan</label>
+                    <select asp-for="EmployeeId" class="form-select form-select-sm"
+                            asp-items="ViewBag.Employees" id="EmployeeId" required>
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
 
-            <!-- Time -->
-            <div class="mb-3">
-                <label for="TimeId" class="form-label">Zaman Dilimi</label>
-                <select asp-for="TimeId" class="form-select" asp-items="ViewBag.Times"></select>
-            </div>
+                <!-- Time -->
+                <div class="mb-3">
+                    <label for="TimeId" class="form-label">Zaman Dilimi</label>
+                    <select asp-for="TimeId" class="form-select form-select-sm"
+                            asp-items="ViewBag.Times" id="TimeId" required>
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="TimeId" class="text-danger"></span>
+                </div>
 
-            <!-- Description -->
-            <div class="mb-3">
-                <label asp-for="Description" class="form-label">Açıklama</label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
+                <!-- Description -->
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">Açıklama</label>
+                    <input asp-for="Description" class="form-control form-control-sm" placeholder="Randevu ile ilgili açıklama" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Kaydet</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
-        </form>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary btn-sm">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">İptal</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 @section Scripts {
-    @* partial vs render partial, 
-       Duplicate check: use PartialAsync if you want to do @await or code block for RenderPartialAsync *@
-    @{
-        await Html.PartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // Salon seçildiğinde Servisleri getir
+            $("#SalonId").change(function() {
+                var salonId = $(this).val();
+                if (!salonId) {
+                    $("#ServiceId").empty().append('<option value="">Seçiniz</option>');
+                    $("#EmployeeId").empty().append('<option value="">Seçiniz</option>');
+                    $("#TimeId").empty().append('<option value="">Seçiniz</option>');
+                    return;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("GetServicesForSalon", "Appointments")',
+                    type: 'GET',
+                    data: { salonId: salonId },
+                    success: function (data) {
+                        var serviceSelect = $("#ServiceId");
+                        serviceSelect.empty().append('<option value="">Seçiniz</option>');
+
+                        $.each(data, function (i, service) {
+                            serviceSelect.append($("<option>", {
+                                value: service.serviceId,
+                                text: service.name
+                            }));
+                        });
+
+                        $("#EmployeeId").empty().append('<option value="">Seçiniz</option>');
+                        $("#TimeId").empty().append('<option value="">Seçiniz</option>');
+                    }
+                });
+            });
+
+            // Servis seçildiğinde Çalışanları getir
+            $("#ServiceId").change(function() {
+                var serviceId = $(this).val();
+                var salonId = $("#SalonId").val();
+
+                if (!serviceId) {
+                    $("#EmployeeId").empty().append('<option value="">Seçiniz</option>');
+                    $("#TimeId").empty().append('<option value="">Seçiniz</option>');
+                    return;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("GetEmployeesForService", "Appointments")',
+                    type: 'GET',
+                    data: { serviceId: serviceId },
+                    success: function (data) {
+                        var employeeSelect = $("#EmployeeId");
+                        employeeSelect.empty().append('<option value="">Seçiniz</option>');
+
+                        $.each(data, function (i, emp) {
+                            employeeSelect.append($("<option>", {
+                                value: emp.employeeId,
+                                text: emp.fullName
+                            }));
+                        });
+
+                        $("#TimeId").empty().append('<option value="">Seçiniz</option>');
+                    }
+                });
+            });
+
+            // Çalışan seçildiğinde Zaman Dilimlerini getir
+            $("#EmployeeId").change(function() {
+                var employeeId = $(this).val();
+                var serviceId = $("#ServiceId").val();
+                var date = new Date().toISOString().split('T')[0]; // Bugünün tarihi (YYYY-MM-DD)
+
+                if (!employeeId) {
+                    $("#TimeId").empty().append('<option value="">Seçiniz</option>');
+                    return;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("GetAvailableTimes", "Appointments")',
+                    type: 'GET',
+                    data: { employeeId: employeeId, serviceId: serviceId, date: date },
+                    success: function (data) {
+                        var timeSelect = $("#TimeId");
+                        timeSelect.empty().append('<option value="">Seçiniz</option>');
+
+                        if (data.error) {
+                            timeSelect.append($("<option>", {
+                                value: "",
+                                text: data.error
+                            }));
+                            return;
+                        }
+
+                        $.each(data, function(i, timeItem) {
+                            timeSelect.append($("<option>", {
+                                value: timeItem.timeId,
+                                text: timeItem.startTime
+                            }));
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
 }

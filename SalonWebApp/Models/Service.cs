@@ -8,7 +8,7 @@ namespace SalonWebApp.Models
         {
         }
 
-        public Service(int serviceId, string name, decimal price, TimeSpan duration, int salonId, Salon salon, ICollection<EmployeeService> employeeServices)
+        public Service(int serviceId, string name, decimal price, TimeSpan duration, int salonId, Salon salon, ICollection<EmployeeService> employeeServices, ICollection<Appointment> appointments)
         {
             ServiceId = serviceId;
             Name = name;
@@ -17,6 +17,7 @@ namespace SalonWebApp.Models
             SalonId = salonId;
             Salon = salon;
             EmployeeServices = employeeServices;
+            Appointments = appointments;
         }
 
         public int ServiceId { get; set; }
@@ -33,9 +34,10 @@ namespace SalonWebApp.Models
         [Required]
         public int SalonId { get; set; }
 
-        [Required]
-        public Salon Salon { get; set; }
+        public Salon? Salon { get; set; }
 
-        public required ICollection<EmployeeService> EmployeeServices { get; set; }
+        public ICollection<EmployeeService> EmployeeServices { get; set; }
+
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

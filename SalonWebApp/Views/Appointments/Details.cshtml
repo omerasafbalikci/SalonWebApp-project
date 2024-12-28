@@ -1,34 +1,35 @@
 ﻿@model SalonWebApp.Models.Appointment
 
 @{
-    Layout = User.IsInRole("Admin")
+    Layout = User.IsInRole(Roles.ADMIN.ToString())
     ? "~/Views/Shared/_LayoutAdmin.cshtml"
     : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Randevu Detayı";
 }
 
-<h2>Randevu Detayı</h2>
-<hr />
+<h2 class="text-center mb-4">Randevu Detayı</h2>
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">@Model.Service?.Name</h5>
-        <p class="card-text">
-            <strong>Kullanıcı:</strong> @Model.User?.Email <br />
-            <strong>Salon:</strong> @Model.Salon?.Name <br />
-            <strong>Çalışan:</strong> @Model.Employee?.FirstName @Model.Employee?.LastName <br />
-            <strong>Tarih/Saat:</strong> @Model.Time?.Date.ToShortDateString() [@Model.Time?.StartTime - @Model.Time?.EndTime] <br />
-            <strong>Açıklama:</strong> @Model.Description
-        </p>
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm" style="width: 24rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center text-primary">@Model.Service?.Name</h5>
+            <hr />
+            <p class="card-text">
+                <strong>Kullanıcı:</strong> @Model.User?.Email <br />
+                <strong>Salon:</strong> @Model.Salon?.Name <br />
+                <strong>Çalışan:</strong> @Model.Employee?.FirstName @Model.Employee?.LastName <br />
+                <strong>Tarih/Saat:</strong> @Model.Time?.Date.ToShortDateString() [@Model.Time?.StartTime - @Model.Time?.EndTime] <br />
+                <strong>Açıklama:</strong> @Model.Description
+            </p>
+        </div>
     </div>
 </div>
 
-<div class="mt-3">
+<div class="d-flex justify-content-center mt-4">
     @if (User.IsInRole("ADMIN"))
     {
-        <a asp-action="Edit" asp-route-id="@Model.AppointmentId" class="btn btn-warning">Düzenle</a>
-        <a asp-action="Delete" asp-route-id="@Model.AppointmentId" class="btn btn-danger ms-2">Sil</a>
-        <span class="mx-2"> | </span>
+        <a asp-action="Edit" asp-route-id="@Model.AppointmentId" class="btn btn-warning btn-sm me-2">Düzenle</a>
+        <a asp-action="Delete" asp-route-id="@Model.AppointmentId" class="btn btn-danger btn-sm me-2">Sil</a>
     }
-    <a asp-action="Index" class="btn btn-secondary">Randevular</a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">Randevular</a>
 </div>

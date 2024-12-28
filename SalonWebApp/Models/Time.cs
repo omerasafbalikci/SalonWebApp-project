@@ -32,6 +32,6 @@ namespace SalonWebApp.Models
         [Required]
         public bool Selectable { get; set; }
 
-        public required ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

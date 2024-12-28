@@ -110,6 +110,23 @@ namespace SalonWebApp.Models
 
                 entity.HasOne(wd => wd.Employee).WithMany(e => e.WorkingDays).HasForeignKey(wd => wd.EmployeeId);
             });
+
+            modelBuilder.Entity<Appointment>(entity =>
+            {
+                entity.HasKey(a => a.AppointmentId);
+                entity.Property(a => a.UserId).IsRequired();
+                entity.Property(a => a.SalonId).IsRequired();
+                entity.Property(a => a.ServiceId).IsRequired();
+                entity.Property(a => a.EmployeeId).IsRequired();
+                entity.Property(a => a.TimeId).IsRequired();
+                entity.Property(a => a.Description).IsRequired();
+
+                entity.HasOne(a => a.User).WithMany(u => u.Appointments).HasForeignKey(a => a.UserId);
+                entity.HasOne(a => a.Salon).WithMany(s => s.Appointments).HasForeignKey(a => a.SalonId);
+                entity.HasOne(a => a.Service).WithMany(sr => sr.Appointments).HasForeignKey(a => a.ServiceId);
+                entity.HasOne(a => a.Employee).WithMany(e => e.Appointments).HasForeignKey(a => a.EmployeeId);
+                entity.HasOne(a => a.Time).WithMany(t => t.Appointments).HasForeignKey(a => a.TimeId);
+            });
         }
     }
 }

@@ -5,44 +5,47 @@
     ViewData["Title"] = "Randevular";
 }
 
-<h2>Randevular</h2>
-<hr />
+<h2 class="text-center mb-4">Randevular</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Yeni Randevu Oluştur</a>
-</p>
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-primary btn-sm">Yeni Randevu Oluştur</a>
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Kullanıcı</th>
-            <th>Salon</th>
-            <th>Servis</th>
-            <th>Çalışan</th>
-            <th>Tarih/Saat</th>
-            <th>Açıklama</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var appointment in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-sm">
+        <thead class="table-light">
             <tr>
-                <td>@appointment.User?.Email</td>
-                <td>@appointment.Salon?.Name</td>
-                <td>@appointment.Service?.Name</td>
-                <td>@appointment.Employee?.FirstName @appointment.Employee?.LastName</td>
-                <td>
-                    @appointment.Time?.Date.ToShortDateString()
-                    [@appointment.Time?.StartTime - @appointment.Time?.EndTime]
-                </td>
-                <td>@appointment.Description</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-info">Detay</a>
-                    <a asp-action="Edit" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-warning ms-1">Düzenle</a>
-                    <a asp-action="Delete" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-danger ms-1">Sil</a>
-                </td>
+                <th>Kullanıcı</th>
+                <th>Salon</th>
+                <th>Servis</th>
+                <th>Çalışan</th>
+                <th>Tarih/Saat</th>
+                <th>Açıklama</th>
+                <th style="width: 150px;">İşlemler</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model)
+            {
+                <tr>
+                    <td>@appointment.User?.Email</td>
+                    <td>@appointment.Salon?.Name</td>
+                    <td>@appointment.Service?.Name</td>
+                    <td>@appointment.Employee?.FirstName @appointment.Employee?.LastName</td>
+                    <td>
+                        @appointment.Time?.Date.ToShortDateString()
+                        [@appointment.Time?.StartTime - @appointment.Time?.EndTime]
+                    </td>
+                    <td>@appointment.Description</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a asp-action="Details" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-info me-1">Detay</a>
+                            <a asp-action="Edit" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-warning me-1">Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-danger">Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -5,36 +5,57 @@
     ViewData["Title"] = "Kullanıcı Detayı";
 }
 
-<h2>Kullanıcı Detayı</h2>
-<hr />
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">@Model.FirstName @Model.LastName (@Model.Role)</h4>
-        <p>
-            <strong>Email:</strong> @Model.Email <br />
-            <strong>Telefon:</strong> @Model.PhoneNumber <br />
-            <strong>Cinsiyet:</strong> @Model.Gender <br />
-        </p>
+<h2 class="text-center mb-4">Kullanıcı Detayı</h2>
 
-        @if (Model.Appointments != null && Model.Appointments.Any())
-        {
-            <h5>Aldığı Randevular</h5>
-            <ul>
-                @foreach (var app in Model.Appointments)
-                {
-                    <li>Randevu ID: @app.AppointmentId, Salon: @app.Salon?.Name, Servis: @app.Service?.Name</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <p>Henüz randevu kaydı bulunmuyor.</p>
-        }
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm" style="width: 30rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center">@Model.FirstName @Model.LastName <small class="text-muted">(@Model.Role)</small></h4>
+            <hr />
+
+            <table class="table table-borderless table-sm">
+                <tbody>
+                    <tr>
+                        <th>Email:</th>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <th>Telefon:</th>
+                        <td>@Model.PhoneNumber</td>
+                    </tr>
+                    <tr>
+                        <th>Cinsiyet:</th>
+                        <td>@Model.Gender</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr />
+
+            @if (Model.Appointments != null && Model.Appointments.Any())
+            {
+                <h5 class="text-center">Aldığı Randevular</h5>
+                <ul class="list-group">
+                    @foreach (var app in Model.Appointments)
+                    {
+                        <li class="list-group-item">
+                            <strong>Randevu ID:</strong> @app.AppointmentId <br />
+                            <strong>Salon:</strong> @app.Salon?.Name <br />
+                            <strong>Servis:</strong> @app.Service?.Name
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-center text-muted">Henüz randevu kaydı bulunmuyor.</p>
+            }
+        </div>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Edit" asp-route-id="@Model.UserId" class="btn btn-warning">Düzenle</a>
-    <a asp-action="Delete" asp-route-id="@Model.UserId" class="btn btn-danger ms-2">Sil</a>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
+<div class="d-flex justify-content-center mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.UserId" class="btn btn-warning btn-sm me-2">Düzenle</a>
+    <a asp-action="Delete" asp-route-id="@Model.UserId" class="btn btn-danger btn-sm me-2">Sil</a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">Geri</a>
 </div>

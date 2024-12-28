@@ -1,7 +1,7 @@
 ﻿@model SalonWebApp.Models.Salon
 
 @{
-    Layout = User.IsInRole("Admin")
+    Layout = User.IsInRole(Roles.ADMIN.ToString())
         ? "~/Views/Shared/_LayoutAdmin.cshtml"
         : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Salon Detayı";

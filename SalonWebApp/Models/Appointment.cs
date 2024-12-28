@@ -29,32 +29,27 @@ namespace SalonWebApp.Models
         [Required]
         public int UserId { get; set; }
 
-        [Required]
-        public User User { get; set; }
+        public User? User { get; set; }
 
         [Required]
         public int SalonId { get; set; }
 
-        [Required]
-        public Salon Salon { get; set; }
+        public Salon? Salon { get; set; }
 
         [Required]
         public int ServiceId { get; set; }
 
-        [Required]
-        public Service Service { get; set; }
+        public Service? Service { get; set; }
 
         [Required]
         public int EmployeeId { get; set; }
 
-        [Required]
-        public Employee Employee { get; set; }
+        public Employee? Employee { get; set; }
 
         [Required]
         public int TimeId { get; set; }
 
-        [Required]
-        public Time Time { get; set; }
+        public Time? Time { get; set; }
 
         public string? Description { get; set; }
     }

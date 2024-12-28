@@ -5,39 +5,40 @@
     ViewData["Title"] = "Kullanıcı Listesi";
 }
 
-<h2>Kullanıcı Listesi</h2>
-<hr />
+<h2 class="text-center mb-4">Kullanıcı Listesi</h2>
 
-<p>
-    <a asp-action="CreateAdmin" class="btn btn-primary">Yeni Admin Oluştur</a>
-</p>
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="CreateAdmin" class="btn btn-primary btn-sm">Yeni Admin Oluştur</a>
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Ad Soyad</th>
-            <th>Email</th>
-            <th>Telefon</th>
-            <th>Cinsiyet</th>
-            <th>Rol</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-sm">
+        <thead class="table-light">
             <tr>
-                <td>@user.FirstName @user.LastName</td>
-                <td>@user.Email</td>
-                <td>@user.PhoneNumber</td>
-                <td>@user.Gender</td>
-                <td>@user.Role</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@user.UserId" class="btn btn-info btn-sm">Detay</a>
-                    <a asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
-                    <a asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-danger btn-sm ms-1">Sil</a>
-                </td>
+                <th>Ad Soyad</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Cinsiyet</th>
+                <th>Rol</th>
+                <th style="width: 150px;">İşlemler</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FirstName @user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.Gender</td>
+                    <td>@user.Role</td>
+                    <td class="text-center">
+                        <a asp-action="Details" asp-route-id="@user.UserId" class="btn btn-info btn-sm">Detay</a>
+                        <a asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
+                        <a asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-danger btn-sm ms-1">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
