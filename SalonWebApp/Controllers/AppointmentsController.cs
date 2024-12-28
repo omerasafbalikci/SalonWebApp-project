@@ -141,7 +141,7 @@ namespace SalonWebApp.Controllers
             {
                 _context.Appointments.Add(appointment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Appointments");
             }
             catch (Exception)
             {

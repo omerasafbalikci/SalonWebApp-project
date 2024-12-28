@@ -7,43 +7,54 @@
     ViewData["Title"] = "Kullanıcı Düzenle";
 }
 
-<h2 class="text-center mb-4">Kullanıcı Düzenle</h2>
+<h2 class="text-center text-primary mb-4">Kullanıcı Düzenle</h2>
 
 <div class="d-flex justify-content-center">
-    <div class="card shadow-sm" style="width: 28rem;">
+    <div class="card shadow-lg" style="width: 30rem;">
         <div class="card-body">
             <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
                 <input type="hidden" asp-for="UserId" />
 
+                <!-- Ad -->
                 <div class="mb-3">
                     <label asp-for="FirstName" class="form-label">Ad</label>
                     <input asp-for="FirstName" class="form-control form-control-sm" placeholder="Adınızı girin" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
 
+                <!-- Soyad -->
                 <div class="mb-3">
                     <label asp-for="LastName" class="form-label">Soyad</label>
                     <input asp-for="LastName" class="form-control form-control-sm" placeholder="Soyadınızı girin" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
 
+                <!-- Email -->
                 <div class="mb-3">
                     <label asp-for="Email" class="form-label">Email</label>
                     <input asp-for="Email" type="email" class="form-control form-control-sm" placeholder="Email adresinizi girin" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
+                <!-- Telefon -->
                 <div class="mb-3">
                     <label asp-for="PhoneNumber" class="form-label">Telefon</label>
                     <input asp-for="PhoneNumber" type="tel" class="form-control form-control-sm" placeholder="Telefon numaranızı girin" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
 
+                <!-- Cinsiyet -->
                 <div class="mb-3">
                     <label asp-for="Gender" class="form-label">Cinsiyet</label>
                     <select asp-for="Gender" class="form-select form-select-sm">
                         <option value="MALE">Erkek</option>
                         <option value="FEMALE">Kadın</option>
                     </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>
 
+                <!-- Rol (Admin İçin) -->
                 @if (User.IsInRole("ADMIN"))
                 {
                     <div class="mb-3">
@@ -52,12 +63,18 @@
                             <option value="ADMIN">Admin</option>
                             <option value="MEMBER">Üye</option>
                         </select>
+                        <span asp-validation-for="Role" class="text-danger"></span>
                     </div>
                 }
 
-                <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-success btn-sm">Kaydet</button>
-                    <a asp-action="Index" class="btn btn-secondary btn-sm">Geri</a>
+                <!-- Butonlar -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="bi bi-check-circle"></i> Kaydet
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-arrow-left-circle"></i> Geri
+                    </a>
                 </div>
             </form>
         </div>
@@ -65,7 +82,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

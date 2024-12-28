@@ -2,25 +2,44 @@
 
 @{
     Layout = User.IsInRole(Roles.ADMIN.ToString())
-    ? "~/Views/Shared/_LayoutAdmin.cshtml"
-    : "~/Views/Shared/_Layout.cshtml";
+        ? "~/Views/Shared/_LayoutAdmin.cshtml"
+        : "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Randevu Detayı";
 }
 
-<h2 class="text-center mb-4">Randevu Detayı</h2>
+<h2 class="text-center text-primary mb-4">Randevu Detayı</h2>
 
 <div class="d-flex justify-content-center">
-    <div class="card shadow-sm" style="width: 24rem;">
+    <div class="card shadow-lg" style="width: 30rem;">
         <div class="card-body">
-            <h5 class="card-title text-center text-primary">@Model.Service?.Name</h5>
+            <h5 class="card-title text-center text-primary">
+                @Model.Service?.Name
+            </h5>
             <hr />
-            <p class="card-text">
-                <strong>Kullanıcı:</strong> @Model.User?.Email <br />
-                <strong>Salon:</strong> @Model.Salon?.Name <br />
-                <strong>Çalışan:</strong> @Model.Employee?.FirstName @Model.Employee?.LastName <br />
-                <strong>Tarih/Saat:</strong> @Model.Time?.Date.ToShortDateString() [@Model.Time?.StartTime - @Model.Time?.EndTime] <br />
-                <strong>Açıklama:</strong> @Model.Description
-            </p>
+            <table class="table table-borderless table-sm">
+                <tbody>
+                    <tr>
+                        <th class="text-end">Kullanıcı:</th>
+                        <td>@Model.User?.Email</td>
+                    </tr>
+                    <tr>
+                        <th class="text-end">Salon:</th>
+                        <td>@Model.Salon?.Name</td>
+                    </tr>
+                    <tr>
+                        <th class="text-end">Çalışan:</th>
+                        <td>@Model.Employee?.FirstName @Model.Employee?.LastName</td>
+                    </tr>
+                    <tr>
+                        <th class="text-end">Tarih/Saat:</th>
+                        <td>@Model.Time?.Date.ToShortDateString() [@Model.Time?.StartTime - @Model.Time?.EndTime]</td>
+                    </tr>
+                    <tr>
+                        <th class="text-end">Açıklama:</th>
+                        <td>@Model.Description</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -28,8 +47,14 @@
 <div class="d-flex justify-content-center mt-4">
     @if (User.IsInRole("ADMIN"))
     {
-        <a asp-action="Edit" asp-route-id="@Model.AppointmentId" class="btn btn-warning btn-sm me-2">Düzenle</a>
-        <a asp-action="Delete" asp-route-id="@Model.AppointmentId" class="btn btn-danger btn-sm me-2">Sil</a>
+        <a asp-action="Edit" asp-route-id="@Model.AppointmentId" class="btn btn-warning btn-sm me-2">
+            <i class="bi bi-pencil-square"></i> Düzenle
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model.AppointmentId" class="btn btn-danger btn-sm me-2">
+            <i class="bi bi-trash-fill"></i> Sil
+        </a>
     }
-    <a asp-action="Index" class="btn btn-secondary btn-sm">Randevular</a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">
+        <i class="bi bi-arrow-left-circle"></i> Randevular
+    </a>
 </div>

@@ -5,37 +5,47 @@
     ViewData["Title"] = "İlişki Düzenle";
 }
 
-<h2>Çalışan - Servis İlişkisi Düzenle</h2>
+<h2 class="text-center">Çalışan - Servis İlişkisi Düzenle</h2>
 <hr />
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="EmployeeServiceId" />
+<div class="d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 40%; min-width: 350px;">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="EmployeeServiceId" />
 
-            <div class="mb-3">
-                <label asp-for="EmployeeId" class="form-label">Çalışan</label>
-                <select asp-for="EmployeeId" class="form-select"
-                        asp-items="@(new SelectList(ViewBag.Employees, "EmployeeId", "FirstName", Model.EmployeeId))">
-                </select>
-                <span asp-validation-for="EmployeeId" class="text-danger"></span>
-            </div>
+                <div class="mb-3">
+                    <label asp-for="EmployeeId" class="form-label">Çalışan</label>
+                    <select asp-for="EmployeeId" class="form-select form-select-sm"
+                            asp-items="@(new SelectList(ViewBag.Employees, "EmployeeId", "FirstName", Model.EmployeeId))">
+                    </select>
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
 
-            <div class="mb-3">
-                <label asp-for="ServiceId" class="form-label">Servis</label>
-                <select asp-for="ServiceId" class="form-select"
-                        asp-items="@(new SelectList(ViewBag.Services, "ServiceId", "Name", Model.ServiceId))">
-                </select>
-                <span asp-validation-for="ServiceId" class="text-danger"></span>
-            </div>
+                <div class="mb-3">
+                    <label asp-for="ServiceId" class="form-label">Servis</label>
+                    <select asp-for="ServiceId" class="form-select form-select-sm"
+                            asp-items="@(new SelectList(ViewBag.Services, "ServiceId", "Name", Model.ServiceId))">
+                    </select>
+                    <span asp-validation-for="ServiceId" class="text-danger"></span>
+                </div>
 
-            <button type="submit" class="btn btn-success">Kaydet</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
-        </form>
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="bi bi-check-circle"></i> Kaydet
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-arrow-left-circle"></i> Geri
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -20,10 +20,8 @@ namespace SalonWebApp.Models
 
         public int WorkingDayId { get; set; }
 
-        [Required]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
 
-        [Required]
         public Employee? Employee { get; set; }
 
         [Required]

@@ -5,15 +5,28 @@
     ViewData["Title"] = "Servis Sil";
 }
 
-<h2>Servis Sil</h2>
+<h2 class="text-center text-danger">Servis Sil</h2>
 <hr />
 
-<div class="alert alert-danger">
-    <strong>@Model.Name</strong> adlı servisi silmek istediğinizden emin misiniz?
+<div class="d-flex justify-content-center">
+    <div class="card shadow-lg border-danger" style="width: 40%; min-width: 350px;">
+        <div class="card-body text-center">
+            <h4 class="text-danger">
+                <i class="bi bi-exclamation-triangle-fill"></i> Dikkat!
+            </h4>
+            <p class="card-text mt-3">
+                <strong>@Model.Name</strong> adlı servisi silmek üzeresiniz. Bu işlem geri alınamaz!
+            </p>
+        </div>
+    </div>
 </div>
 
-<form asp-action="Delete">
+<form asp-action="Delete" class="d-flex justify-content-center mt-4">
     <input type="hidden" asp-for="ServiceId" />
-    <button type="submit" class="btn btn-danger">Sil</button>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
+    <button type="submit" class="btn btn-danger btn-sm me-2">
+        <i class="bi bi-trash-fill"></i> Sil
+    </button>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">
+        <i class="bi bi-arrow-left-circle"></i> Geri
+    </a>
 </form>

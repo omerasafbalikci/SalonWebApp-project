@@ -39,8 +39,7 @@ namespace SalonWebApp.Models
         [Phone]
         public string Phone { get; set; }
 
-        [Required]
-        public int SalonId { get; set; }
+        public int? SalonId { get; set; }
 
         public Salon? Salon { get; set; }
 

@@ -2,41 +2,55 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    ViewData["Title"] = "Zaman Detayı";
+    ViewData["Title"] = "Zaman Dilimi Detayı";
 }
 
-<h2>Zaman Dilimi Detayı</h2>
+<h2 class="text-center">Zaman Dilimi Detayı</h2>
 <hr />
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">
-            @Model.Date.ToShortDateString() [@Model.StartTime - @Model.EndTime]
-        </h4>
-        <p class="card-text">
-            <strong>Seçilebilir:</strong> @(Model.Selectable ? "Evet" : "Hayır")
-        </p>
-        @if (Model.Appointments != null && Model.Appointments.Any())
-        {
-            <h5>Bu zaman dilimine alınan randevular</h5>
-            <ul>
-                @foreach (var app in Model.Appointments)
-                {
-                    <li>
-                        RandevuID: @app.AppointmentId, Kullanıcı: @app.User?.Email, Servis: @app.Service?.Name
-                    </li>
-                }
-            </ul>
-        }
-        else
-        {
-            <p>Bu zaman dilimi için henüz randevu bulunmuyor.</p>
-        }
+<div class="d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 40%; min-width: 350px;">
+        <div class="card-body">
+            <h4 class="card-title text-primary">
+                @Model.Date.ToShortDateString() [@Model.StartTime - @Model.EndTime]
+            </h4>
+            <p class="card-text mt-3">
+                <strong>Seçilebilir:</strong>
+                <span class="badge @(Model.Selectable ? "bg-success" : "bg-danger")">
+                    @(Model.Selectable ? "Evet" : "Hayır")
+                </span>
+            </p>
+
+            @if (Model.Appointments != null && Model.Appointments.Any())
+            {
+                <h5 class="mt-4">Bu Zaman Dilimine Alınan Randevular</h5>
+                <ul class="list-group">
+                    @foreach (var app in Model.Appointments)
+                    {
+                        <li class="list-group-item">
+                            <strong>Randevu ID:</strong> @app.AppointmentId <br />
+                            <strong>Kullanıcı:</strong> @app.User?.Email <br />
+                            <strong>Servis:</strong> @app.Service?.Name
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted mt-4">Bu zaman dilimi için henüz randevu bulunmuyor.</p>
+            }
+        </div>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Edit" asp-route-id="@Model.TimeId" class="btn btn-warning">Düzenle</a>
-    <a asp-action="Delete" asp-route-id="@Model.TimeId" class="btn btn-danger ms-2">Sil</a>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Liste</a>
+<div class="d-flex justify-content-center mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.TimeId" class="btn btn-warning btn-sm me-2">
+        <i class="bi bi-pencil-square"></i> Düzenle
+    </a>
+    <a asp-action="Delete" asp-route-id="@Model.TimeId" class="btn btn-danger btn-sm me-2">
+        <i class="bi bi-trash-fill"></i> Sil
+    </a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">
+        <i class="bi bi-list"></i> Liste
+    </a>
 </div>

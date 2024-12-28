@@ -5,51 +5,56 @@
     ViewData["Title"] = "Çalışma Günü Düzenle";
 }
 
-<h2 class="text-center">Çalışma Günü Düzenle</h2>
+<h2 class="text-center text-primary">Çalışma Günü Düzenle</h2>
 <hr />
 
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <form asp-action="Edit" class="border p-4 rounded shadow-sm">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 40%; min-width: 350px;">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="WorkingDayId" />
 
-            <input type="hidden" asp-for="WorkingDayId" />
+                <!-- Çalışan -->
+                <div class="mb-3">
+                    <label asp-for="EmployeeId" class="form-label">Çalışan</label>
+                    <select asp-for="EmployeeId" class="form-select form-select-sm"
+                            asp-items="@(new SelectList(ViewBag.Employees, "EmployeeId", "FirstName", Model.EmployeeId))">
+                    </select>
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
 
-            <!-- Çalışan -->
-            <div class="mb-3">
-                <label for="EmployeeId" class="form-label">Çalışan</label>
-                <select asp-for="EmployeeId" class="form-select"
-                        asp-items="@(new SelectList(ViewBag.Employees, "EmployeeId", "FirstName", Model.EmployeeId))">
-                </select>
-                <span asp-validation-for="EmployeeId" class="text-danger"></span>
-            </div>
+                <!-- Tarih -->
+                <div class="mb-3">
+                    <label asp-for="Date" class="form-label">Tarih</label>
+                    <input asp-for="Date" class="form-control form-control-sm" type="date" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
 
-            <!-- Tarih -->
-            <div class="mb-3">
-                <label asp-for="Date" class="form-label">Tarih</label>
-                <input asp-for="Date" class="form-control" type="date" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
+                <!-- Başlangıç Saati -->
+                <div class="mb-3">
+                    <label asp-for="StartTime" class="form-label">Başlangıç Saati</label>
+                    <input asp-for="StartTime" class="form-control form-control-sm" type="time" />
+                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                </div>
 
-            <!-- StartTime -->
-            <div class="mb-3">
-                <label asp-for="StartTime" class="form-label">Başlangıç Saati</label>
-                <input asp-for="StartTime" class="form-control" type="time" />
-                <span asp-validation-for="StartTime" class="text-danger"></span>
-            </div>
+                <!-- Bitiş Saati -->
+                <div class="mb-3">
+                    <label asp-for="EndTime" class="form-label">Bitiş Saati</label>
+                    <input asp-for="EndTime" class="form-control form-control-sm" type="time" />
+                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                </div>
 
-            <!-- EndTime -->
-            <div class="mb-3">
-                <label asp-for="EndTime" class="form-label">Bitiş Saati</label>
-                <input asp-for="EndTime" class="form-control" type="time" />
-                <span asp-validation-for="EndTime" class="text-danger"></span>
-            </div>
-
-            <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-success">Kaydet</button>
-                <a asp-action="Index" class="btn btn-secondary">İptal</a>
-            </div>
-        </form>
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="bi bi-check-circle"></i> Kaydet
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-arrow-left-circle"></i> İptal
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

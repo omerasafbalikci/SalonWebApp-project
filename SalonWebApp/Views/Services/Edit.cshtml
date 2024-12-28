@@ -5,38 +5,53 @@
     ViewData["Title"] = "Servis Düzenle";
 }
 
-<h2>Servis Düzenle</h2>
+<h2 class="text-center">Servis Düzenle</h2>
 <hr />
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 40%; min-width: 350px;">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
 
-            <input type="hidden" asp-for="ServiceId" />
+                <input type="hidden" asp-for="ServiceId" />
 
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label">Servis Adı</label>
-                <input asp-for="Name" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="Price" class="form-label">Fiyat</label>
-                <input asp-for="Price" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="Duration" class="form-label">Süre</label>
-                <input asp-for="Duration" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="SalonId" class="form-label">Salon</label>
-                <select asp-for="SalonId" class="form-select"
-                        asp-items="@(new SelectList(ViewBag.Salons, "SalonId", "Name", Model.SalonId))">
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Servis Adı</label>
+                    <input asp-for="Name" class="form-control form-control-sm" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
 
-            <button type="submit" class="btn btn-success">Kaydet</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
-        </form>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label">Fiyat</label>
+                    <input asp-for="Price" class="form-control form-control-sm" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Duration" class="form-label">Süre</label>
+                    <input asp-for="Duration" class="form-control form-control-sm" placeholder="00:30:00" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SalonId" class="form-label">Salon</label>
+                    <select asp-for="SalonId" class="form-select form-select-sm"
+                            asp-items="@(new SelectList(ViewBag.Salons, "SalonId", "Name", Model.SalonId))">
+                    </select>
+                    <span asp-validation-for="SalonId" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="bi bi-check-circle"></i> Kaydet
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-arrow-left-circle"></i> Geri
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

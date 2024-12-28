@@ -5,41 +5,47 @@
     ViewData["Title"] = "Servis Detayı";
 }
 
-<h2>Servis Detayı</h2>
+<h2 class="text-center">Servis Detayı</h2>
 <hr />
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">@Model.Name</h4>
-        <p class="card-text">
-            <strong>Fiyat:</strong> @Model.Price <br />
-            <strong>Süre:</strong> @Model.Duration <br />
-            <strong>Salon:</strong> @Model.Salon?.Name <br />
-        </p>
+<div class="d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 40%; min-width: 350px;">
+        <div class="card-body">
+            <h4 class="card-title text-primary">@Model.Name</h4>
+            <p class="card-text mt-3">
+                <strong>Fiyat:</strong> @Model.Price.ToString("C") <br />
+                <strong>Süre:</strong> @Model.Duration <br />
+                <strong>Salon:</strong> @Model.Salon?.Name <br />
+            </p>
 
-        @if (Model.EmployeeServices != null && Model.EmployeeServices.Any())
-        {
-            <h5>Bu Servisi Yapabilen Çalışanlar</h5>
-            <ul>
-                @foreach (var empSrv in Model.EmployeeServices)
-                {
-                    <li>
-                        Çalışan ID: @empSrv.EmployeeId /
-                        @empSrv.Employee?.FirstName @empSrv.Employee?.LastName
-                    </li>
-                }
-            </ul>
-        }
-        else
-        {
-            <p>Bu servisi yapabilen henüz bir çalışan kaydı yok.</p>
-        }
-
+            @if (Model.EmployeeServices != null && Model.EmployeeServices.Any())
+            {
+                <h5 class="mt-4">Bu Servisi Yapabilen Çalışanlar</h5>
+                <ul class="list-group">
+                    @foreach (var empSrv in Model.EmployeeServices)
+                    {
+                        <li class="list-group-item">
+                            Çalışan: @empSrv.Employee?.FirstName @empSrv.Employee?.LastName
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted mt-4">Bu servisi yapabilen henüz bir çalışan kaydı yok.</p>
+            }
+        </div>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Edit" asp-route-id="@Model.ServiceId" class="btn btn-warning">Düzenle</a>
-    <a asp-action="Delete" asp-route-id="@Model.ServiceId" class="btn btn-danger ms-2">Sil</a>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
+<div class="d-flex justify-content-center mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.ServiceId" class="btn btn-warning btn-sm me-2">
+        <i class="bi bi-pencil-square"></i> Düzenle
+    </a>
+    <a asp-action="Delete" asp-route-id="@Model.ServiceId" class="btn btn-danger btn-sm me-2">
+        <i class="bi bi-trash-fill"></i> Sil
+    </a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">
+        <i class="bi bi-arrow-left-circle"></i> Geri
+    </a>
 </div>

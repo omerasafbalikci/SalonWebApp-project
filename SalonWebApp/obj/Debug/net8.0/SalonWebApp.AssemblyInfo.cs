@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalonWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1788168278f6640a05962df259e4ed77fd13881f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07316d93aa1c1420b3b06f0857629219b31182ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalonWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalonWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

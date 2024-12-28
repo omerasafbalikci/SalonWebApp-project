@@ -5,17 +5,25 @@
     ViewData["Title"] = "Salon Sil";
 }
 
-<h2>Salon Sil</h2>
+<h2 class="text-center text-danger">Salon Sil</h2>
 <hr />
 
-<div class="alert alert-danger">
-    <strong>@Model.Name</strong> adlı salonu silmek istediğinizden emin misiniz?
+<div class="card shadow-lg border-danger">
+    <div class="card-body text-center">
+        <h4 class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Dikkat!</h4>
+        <p>
+            <strong>@Model.Name</strong> adlı salonu silmek üzeresiniz. Bu işlem geri alınamaz.
+        </p>
+        <p>Silme işlemini onaylamak için "Sil" butonuna basın ya da "İptal" ile geri dönün.</p>
+    </div>
 </div>
 
-<form asp-action="Delete">
+<form asp-action="Delete" class="text-center mt-4">
     <input type="hidden" asp-for="SalonId" />
-    <div class="mb-3">
-        <button type="submit" class="btn btn-danger">Sil</button>
-        <a asp-action="Index" class="btn btn-secondary">İptal</a>
-    </div>
+    <button type="submit" class="btn btn-danger me-2">
+        <i class="bi bi-trash-fill"></i> Sil
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="bi bi-arrow-left-circle"></i> İptal
+    </a>
 </form>

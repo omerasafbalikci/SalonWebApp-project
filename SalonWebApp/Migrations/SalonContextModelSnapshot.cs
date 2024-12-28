@@ -89,7 +89,7 @@ namespace SalonWebApp.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("SalonId")
+                    b.Property<int?>("SalonId")
                         .HasColumnType("int");
 
                     b.HasKey("EmployeeId");
@@ -107,10 +107,10 @@ namespace SalonWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeServiceId"));
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceId")
+                    b.Property<int?>("ServiceId")
                         .HasColumnType("int");
 
                     b.HasKey("EmployeeServiceId");
@@ -181,7 +181,7 @@ namespace SalonWebApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("SalonId")
+                    b.Property<int?>("SalonId")
                         .HasColumnType("int");
 
                     b.HasKey("ServiceId");
@@ -267,7 +267,7 @@ namespace SalonWebApp.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan>("EndTime")
@@ -288,31 +288,31 @@ namespace SalonWebApp.Migrations
                     b.HasOne("SalonWebApp.Models.Employee", "Employee")
                         .WithMany("Appointments")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SalonWebApp.Models.Salon", "Salon")
                         .WithMany("Appointments")
                         .HasForeignKey("SalonId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SalonWebApp.Models.Service", "Service")
                         .WithMany("Appointments")
                         .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SalonWebApp.Models.Time", "Time")
                         .WithMany("Appointments")
                         .HasForeignKey("TimeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SalonWebApp.Models.User", "User")
                         .WithMany("Appointments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Employee");
@@ -331,8 +331,7 @@ namespace SalonWebApp.Migrations
                     b.HasOne("SalonWebApp.Models.Salon", "Salon")
                         .WithMany("Employees")
                         .HasForeignKey("SalonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Salon");
                 });
@@ -342,14 +341,12 @@ namespace SalonWebApp.Migrations
                     b.HasOne("SalonWebApp.Models.Employee", "Employee")
                         .WithMany("EmployeeServices")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("SalonWebApp.Models.Service", "Service")
                         .WithMany("EmployeeServices")
                         .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Employee");
 
@@ -361,8 +358,7 @@ namespace SalonWebApp.Migrations
                     b.HasOne("SalonWebApp.Models.Salon", "Salon")
                         .WithMany("Services")
                         .HasForeignKey("SalonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Salon");
                 });
@@ -372,8 +368,7 @@ namespace SalonWebApp.Migrations
                     b.HasOne("SalonWebApp.Models.Employee", "Employee")
                         .WithMany("WorkingDays")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Employee");
                 });

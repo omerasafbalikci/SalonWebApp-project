@@ -33,7 +33,7 @@ namespace SalonWebApp.Models
                 entity.Property(u => u.Gender).HasConversion<string>().IsRequired();
                 entity.Property(u => u.Role).IsRequired();
 
-                entity.HasMany(u => u.Appointments).WithOne(a => a.User).HasForeignKey(a => a.UserId);
+                entity.HasMany(u => u.Appointments).WithOne(a => a.User).HasForeignKey(a => a.UserId).OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Salon>(entity =>
@@ -47,9 +47,9 @@ namespace SalonWebApp.Models
                 entity.Property(s => s.Address).IsRequired().HasMaxLength(200);
                 entity.Property(s => s.Phone).IsRequired();
 
-                entity.HasMany(s => s.Employees).WithOne(e => e.Salon).HasForeignKey(e => e.SalonId);
-                entity.HasMany(s => s.Services).WithOne(serv => serv.Salon).HasForeignKey(serv => serv.SalonId);
-                entity.HasMany(s => s.Appointments).WithOne(a => a.Salon).HasForeignKey(a => a.SalonId);
+                entity.HasMany(s => s.Employees).WithOne(e => e.Salon).HasForeignKey(e => e.SalonId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(s => s.Services).WithOne(serv => serv.Salon).HasForeignKey(serv => serv.SalonId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(s => s.Appointments).WithOne(a => a.Salon).HasForeignKey(a => a.SalonId).OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -59,22 +59,22 @@ namespace SalonWebApp.Models
                 entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Salary).IsRequired().HasColumnType("decimal(18,2)");
                 entity.Property(e => e.Phone).IsRequired();
-                entity.Property(e => e.SalonId).IsRequired();
+                entity.Property(e => e.SalonId).IsRequired(false);
 
-                entity.HasOne(e => e.Salon).WithMany(s => s.Employees).HasForeignKey(e => e.SalonId);
-                entity.HasMany(e => e.EmployeeServices).WithOne(es => es.Employee).HasForeignKey(es => es.EmployeeId);
-                entity.HasMany(e => e.WorkingDays).WithOne(wd => wd.Employee).HasForeignKey(wd => wd.EmployeeId);
-                entity.HasMany(e => e.Appointments).WithOne(a => a.Employee).HasForeignKey(a => a.EmployeeId);
+                entity.HasOne(e => e.Salon).WithMany(s => s.Employees).HasForeignKey(e => e.SalonId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(e => e.EmployeeServices).WithOne(es => es.Employee).HasForeignKey(es => es.EmployeeId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(e => e.WorkingDays).WithOne(wd => wd.Employee).HasForeignKey(wd => wd.EmployeeId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(e => e.Appointments).WithOne(a => a.Employee).HasForeignKey(a => a.EmployeeId).OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<EmployeeService>(entity =>
             {
                 entity.HasKey(es => es.EmployeeServiceId);
-                entity.Property(es => es.EmployeeId).IsRequired();
-                entity.Property(es => es.ServiceId).IsRequired();
+                entity.Property(es => es.EmployeeId).IsRequired(false);
+                entity.Property(es => es.ServiceId).IsRequired(false);
 
-                entity.HasOne(es => es.Employee).WithMany(e => e.EmployeeServices).HasForeignKey(es => es.EmployeeId);
-                entity.HasOne(es => es.Service).WithMany().HasForeignKey(es => es.ServiceId);
+                entity.HasOne(es => es.Employee).WithMany(e => e.EmployeeServices).HasForeignKey(es => es.EmployeeId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasOne(es => es.Service).WithMany().HasForeignKey(es => es.ServiceId).OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Service>(entity =>
@@ -83,10 +83,10 @@ namespace SalonWebApp.Models
                 entity.Property(serv => serv.Name).IsRequired();
                 entity.Property(serv => serv.Price).IsRequired().HasColumnType("decimal(18,2)");
                 entity.Property(serv => serv.Duration).IsRequired();
-                entity.Property(serv => serv.SalonId).IsRequired();
+                entity.Property(serv => serv.SalonId).IsRequired(false);
 
-                entity.HasOne(serv => serv.Salon).WithMany(s => s.Services).HasForeignKey(serv => serv.SalonId);
-                entity.HasMany(serv => serv.EmployeeServices).WithOne(es => es.Service).HasForeignKey(es => es.ServiceId);
+                entity.HasOne(serv => serv.Salon).WithMany(s => s.Services).HasForeignKey(serv => serv.SalonId).OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(serv => serv.EmployeeServices).WithOne(es => es.Service).HasForeignKey(es => es.ServiceId).OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Time>(entity =>
@@ -97,18 +97,18 @@ namespace SalonWebApp.Models
                 entity.Property(t => t.EndTime).IsRequired();
                 entity.Property(t => t.Selectable).IsRequired();
 
-                entity.HasMany(t => t.Appointments).WithOne(a => a.Time).HasForeignKey(a => a.TimeId);
+                entity.HasMany(t => t.Appointments).WithOne(a => a.Time).HasForeignKey(a => a.TimeId).OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<WorkingDay>(entity =>
             {
                 entity.HasKey(wd => wd.WorkingDayId);
-                entity.Property(wd => wd.EmployeeId).IsRequired();
+                entity.Property(wd => wd.EmployeeId).IsRequired(false);
                 entity.Property(wd => wd.Date).IsRequired();
                 entity.Property(wd => wd.StartTime).IsRequired();
                 entity.Property(wd => wd.EndTime).IsRequired();
 
-                entity.HasOne(wd => wd.Employee).WithMany(e => e.WorkingDays).HasForeignKey(wd => wd.EmployeeId);
+                entity.HasOne(wd => wd.Employee).WithMany(e => e.WorkingDays).HasForeignKey(wd => wd.EmployeeId).OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Appointment>(entity =>
@@ -121,11 +121,11 @@ namespace SalonWebApp.Models
                 entity.Property(a => a.TimeId).IsRequired();
                 entity.Property(a => a.Description).IsRequired();
 
-                entity.HasOne(a => a.User).WithMany(u => u.Appointments).HasForeignKey(a => a.UserId);
-                entity.HasOne(a => a.Salon).WithMany(s => s.Appointments).HasForeignKey(a => a.SalonId);
-                entity.HasOne(a => a.Service).WithMany(sr => sr.Appointments).HasForeignKey(a => a.ServiceId);
-                entity.HasOne(a => a.Employee).WithMany(e => e.Appointments).HasForeignKey(a => a.EmployeeId);
-                entity.HasOne(a => a.Time).WithMany(t => t.Appointments).HasForeignKey(a => a.TimeId);
+                entity.HasOne(a => a.User).WithMany(u => u.Appointments).HasForeignKey(a => a.UserId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(a => a.Salon).WithMany(s => s.Appointments).HasForeignKey(a => a.SalonId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(a => a.Service).WithMany(sr => sr.Appointments).HasForeignKey(a => a.ServiceId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(a => a.Employee).WithMany(e => e.Appointments).HasForeignKey(a => a.EmployeeId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(a => a.Time).WithMany(t => t.Appointments).HasForeignKey(a => a.TimeId).OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

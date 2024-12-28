@@ -31,8 +31,7 @@ namespace SalonWebApp.Models
         [Required]
         public TimeSpan Duration { get; set; }
 
-        [Required]
-        public int SalonId { get; set; }
+        public int? SalonId { get; set; }
 
         public Salon? Salon { get; set; }
 

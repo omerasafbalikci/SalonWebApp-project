@@ -5,50 +5,69 @@
     ViewData["Title"] = "Salon Düzenle";
 }
 
-<h2>Salon Düzenle</h2>
+<h2 class="text-center">Salon Düzenle</h2>
 <hr />
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SalonId" />
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label">Salon Adı</label>
-                <input asp-for="Name" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="Type" class="form-label">Tür</label>
-                <select asp-for="Type" class="form-select">
-                    <option value="Hairdresser">Kuaför (Bayan)</option>
-                    <option value="Barber">Berber (Erkek)</option>
-                    <option value="Mixed">Karma</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label asp-for="OpenDays" class="form-label">Açık Günler</label>
-                <input asp-for="OpenDays" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="OpeningHour" class="form-label">Açılış Saati</label>
-                <input asp-for="OpeningHour" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="ClosingHour" class="form-label">Kapanış Saati</label>
-                <input asp-for="ClosingHour" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="Address" class="form-label">Adres</label>
-                <input asp-for="Address" class="form-control" />
-            </div>
-            <div class="mb-3">
-                <label asp-for="Phone" class="form-label">Telefon</label>
-                <input asp-for="Phone" class="form-control" />
-            </div>
+<div class="d-flex justify-content-center">
+    <div class="card shadow" style="width: 40%; min-width: 350px;">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="SalonId" />
 
-            <button type="submit" class="btn btn-success">Kaydet</button>
-            <a asp-action="Index" class="btn btn-secondary">İptal</a>
-        </form>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Salon Adı</label>
+                    <input asp-for="Name" class="form-control form-control-sm" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Type" class="form-label">Tür</label>
+                    <select asp-for="Type" class="form-select form-select-sm">
+                        <option value="Hairdresser">Kuaför (Bayan)</option>
+                        <option value="Barber">Berber (Erkek)</option>
+                        <option value="Mixed">Karma</option>
+                    </select>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="OpenDays" class="form-label">Açık Günler</label>
+                    <input asp-for="OpenDays" class="form-control form-control-sm" />
+                    <span asp-validation-for="OpenDays" class="text-danger"></span>
+                    <small class="text-muted">Örnek: Monday,Tuesday,Wednesday</small>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="OpeningHour" class="form-label">Açılış Saati</label>
+                    <input asp-for="OpeningHour" class="form-control form-control-sm" type="time" />
+                    <span asp-validation-for="OpeningHour" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ClosingHour" class="form-label">Kapanış Saati</label>
+                    <input asp-for="ClosingHour" class="form-control form-control-sm" type="time" />
+                    <span asp-validation-for="ClosingHour" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Adres</label>
+                    <input asp-for="Address" class="form-control form-control-sm" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Phone" class="form-label">Telefon</label>
+                    <input asp-for="Phone" class="form-control form-control-sm" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-success btn-sm">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">İptal</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
