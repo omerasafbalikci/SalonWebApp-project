@@ -2,7 +2,45 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Admin Paneli";
 }
-<div class="p-5 mb-4 bg-secondary text-white rounded-3">
-    <h1>Admin Paneli</h1>
-    <p>Bu alandan salon, çalışan, randevu vb. yönetebilirsiniz.</p>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="p-5 mb-4 bg-light rounded-3 shadow" style="max-width: 600px;">
+        <div class="text-center">
+            <!-- Logo Ekleme -->
+            <img src="~/images/Lovepik_com-380266051-black-razor-comb-hair-salon-logo-art-product.png" alt="Salon Logo" class="mb-3" style="max-height: 100px; width: auto;">
+        </div>
+        <h1 class="text-center mb-4">ADMIN Paneline Hoş Geldiniz</h1>
+        <p class="text-center">
+            Salon, kişisel bakım ihtiyaçlarınızı karşılamak için tasarlanmış en iyi uygulamadır.
+            Size en yakın salonları keşfedin, kolayca randevu alın ve profesyonel hizmetin tadını çıkarın.
+        </p>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="https://www.instagram.com/y.enes52/" target="_blank" class="btn btn-primary btn-lg custom-button">
+                <i class="bi bi-instagram"></i> İletişim İçin Tıklayın
+            </a>
+        </div>
+    </div>
 </div>
+
+<style>
+    .custom-button {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .custom-button i {
+            margin-right: 8px;
+        }
+</style>

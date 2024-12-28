@@ -5,37 +5,42 @@
     ViewData["Title"] = "Servis Listesi";
 }
 
-<h2>Servis Listesi</h2>
+<h2 class="text-center">Servis Listesi</h2>
 <hr />
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Yeni Servis Ekle</a>
-</p>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Servis Adı</th>
-            <th>Fiyat</th>
-            <th>Süre</th>
-            <th>Salon</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var service in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-sm table-bordered table-hover align-middle">
+        <thead class="table-light">
             <tr>
-                <td>@service.Name</td>
-                <td>@service.Price</td>
-                <td>@service.Duration</td>
-                <td>@service.Salon?.Name</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@service.ServiceId" class="btn btn-info btn-sm">Detay</a>
-                    <a asp-action="Edit" asp-route-id="@service.ServiceId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
-                    <a asp-action="Delete" asp-route-id="@service.ServiceId" class="btn btn-danger btn-sm ms-1">Sil</a>
-                </td>
+                <th>Servis Adı</th>
+                <th>Fiyat</th>
+                <th>Süre</th>
+                <th>Salon</th>
+                <th style="width: 150px;">İşlemler</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var service in Model)
+            {
+                <tr>
+                    <td>@service.Name</td>
+                    <td>@string.Format("{0:C}", service.Price)</td>
+                    <td>@service.Duration</td>
+                    <td>@service.Salon?.Name</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a asp-action="Details" asp-route-id="@service.ServiceId" class="btn btn-info btn-sm me-1">Detay</a>
+                            <a asp-action="Edit" asp-route-id="@service.ServiceId" class="btn btn-warning btn-sm me-1">Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@service.ServiceId" class="btn btn-danger btn-sm">Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Create" class="btn btn-primary">Yeni Servis Ekle</a>
+</div>
+s

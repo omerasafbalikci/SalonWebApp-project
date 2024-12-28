@@ -5,39 +5,43 @@
     ViewData["Title"] = "Çalışan Listesi";
 }
 
-<h2>Çalışan Listesi</h2>
+<h2 class="text-center">Çalışan Listesi</h2>
 <hr />
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Yeni Çalışan Ekle</a>
-</p>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Ad</th>
-            <th>Soyad</th>
-            <th>Maaş</th>
-            <th>Telefon</th>
-            <th>Salon</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var emp in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-sm table-bordered table-hover align-middle">
+        <thead class="table-light">
             <tr>
-                <td>@emp.FirstName</td>
-                <td>@emp.LastName</td>
-                <td>@emp.Salary</td>
-                <td>@emp.Phone</td>
-                <td>@emp.Salon?.Name</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@emp.EmployeeId" class="btn btn-info btn-sm">Detay</a>
-                    <a asp-action="Edit" asp-route-id="@emp.EmployeeId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
-                    <a asp-action="Delete" asp-route-id="@emp.EmployeeId" class="btn btn-danger btn-sm ms-1">Sil</a>
-                </td>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Maaş</th>
+                <th>Telefon</th>
+                <th>Salon</th>
+                <th style="width: 150px;">İşlemler</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.FirstName</td>
+                    <td>@emp.LastName</td>
+                    <td>@string.Format("{0:C}", emp.Salary)</td>
+                    <td>@emp.Phone</td>
+                    <td>@emp.Salon?.Name</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a asp-action="Details" asp-route-id="@emp.EmployeeId" class="btn btn-info btn-sm me-1">Detay</a>
+                            <a asp-action="Edit" asp-route-id="@emp.EmployeeId" class="btn btn-warning btn-sm me-1">Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@emp.EmployeeId" class="btn btn-danger btn-sm">Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Create" class="btn btn-primary">Yeni Çalışan Ekle</a>
+</div>

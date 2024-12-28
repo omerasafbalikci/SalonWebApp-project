@@ -5,33 +5,37 @@
     ViewData["Title"] = "Çalışan - Servis İlişkileri";
 }
 
-<h2>Çalışan - Servis İlişkileri</h2>
+<h2 class="text-center">Çalışan - Servis İlişkileri</h2>
 <hr />
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Yeni İlişki Ekle</a>
-</p>
+<div class="table-responsive">
+    <table class="table table-sm table-bordered table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Çalışan</th>
+                <th>Servis</th>
+                <th style="width: 150px;">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Employee.FirstName @item.Employee.LastName</td>
+                    <td>@item.Service.Name</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a asp-action="Details" asp-route-id="@item.EmployeeServiceId" class="btn btn-info btn-sm me-1">Detay</a>
+                            <a asp-action="Edit" asp-route-id="@item.EmployeeServiceId" class="btn btn-warning btn-sm me-1">Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@item.EmployeeServiceId" class="btn btn-danger btn-sm">Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Çalışan</th>
-            <th>Servis</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Employee.FirstName @item.Employee.LastName</td>
-            <td>@item.Service.Name</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.EmployeeServiceId" class="btn btn-info btn-sm">Detay</a>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeServiceId" class="btn btn-warning btn-sm ms-1">Düzenle</a>
-                <a asp-action="Delete" asp-route-id="@item.EmployeeServiceId" class="btn btn-danger btn-sm ms-1">Sil</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="text-center mt-3">
+    <a asp-action="Create" class="btn btn-primary">Yeni İlişki Ekle</a>
+</div>

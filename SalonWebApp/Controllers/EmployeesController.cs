@@ -55,7 +55,14 @@ namespace SalonWebApp.Controllers
         [Authorize(Roles = "ADMIN")]
         public IActionResult Create()
         {
-            ViewBag.Salons = _context.Salons.ToList();
+            var salons = _context.Salons.ToList();
+            if (!salons.Any())
+            {
+                ModelState.AddModelError(string.Empty, "Sistemde tanımlı salon bulunmamaktadır. Önce bir salon ekleyin.");
+                return View();
+            }
+
+            ViewBag.Salons = salons;
             return View();
         }
 
@@ -71,6 +78,17 @@ namespace SalonWebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // ViewBag.Salons'u yeniden ayarla
+            var salons = _context.Salons.ToList();
+            ViewBag.Salons = salons;
+
+            // Gerekirse salonların olmadığını kontrol edin
+            if (!salons.Any())
+            {
+                ModelState.AddModelError(string.Empty, "Sistemde tanımlı salon bulunmamaktadır. Önce bir salon ekleyin.");
+            }
+
             return View(employee);
         }
 

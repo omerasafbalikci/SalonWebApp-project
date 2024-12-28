@@ -44,8 +44,8 @@ namespace SalonWebApp.Models
 
         public Salon? Salon { get; set; }
 
-        public ICollection<EmployeeService> EmployeeServices { get; set; }
-        public ICollection<WorkingDay> WorkingDays { get; set; }
-        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<EmployeeService>? EmployeeServices { get; set; }
+        public ICollection<WorkingDay>? WorkingDays { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
     }
 }

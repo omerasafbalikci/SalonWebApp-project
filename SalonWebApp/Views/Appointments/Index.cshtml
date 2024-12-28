@@ -5,14 +5,11 @@
     ViewData["Title"] = "Randevular";
 }
 
-<h2 class="text-center mb-4">Randevular</h2>
-
-<div class="d-flex justify-content-end mb-3">
-    <a asp-action="Create" class="btn btn-primary btn-sm">Yeni Randevu Oluştur</a>
-</div>
+<h2 class="text-center">Randevular</h2>
+<hr />
 
 <div class="table-responsive">
-    <table class="table table-bordered table-hover table-sm">
+    <table class="table table-sm table-bordered table-hover align-middle">
         <thead class="table-light">
             <tr>
                 <th>Kullanıcı</th>
@@ -39,13 +36,17 @@
                     <td>@appointment.Description</td>
                     <td>
                         <div class="d-flex justify-content-center">
-                            <a asp-action="Details" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-info me-1">Detay</a>
-                            <a asp-action="Edit" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-warning me-1">Düzenle</a>
-                            <a asp-action="Delete" asp-route-id="@appointment.AppointmentId" class="btn btn-sm btn-danger">Sil</a>
+                            <a asp-action="Details" asp-route-id="@appointment.AppointmentId" class="btn btn-info btn-sm me-1">Detay</a>
+                            <a asp-action="Edit" asp-route-id="@appointment.AppointmentId" class="btn btn-warning btn-sm me-1">Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@appointment.AppointmentId" class="btn btn-danger btn-sm">Sil</a>
                         </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Create" class="btn btn-primary">Yeni Randevu Oluştur</a>
 </div>

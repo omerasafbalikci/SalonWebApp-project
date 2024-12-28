@@ -5,12 +5,12 @@
     ViewData["Title"] = "Çalışma Günü Düzenle";
 }
 
-<h2>Çalışma Günü Düzenle</h2>
+<h2 class="text-center">Çalışma Günü Düzenle</h2>
 <hr />
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-6">
-        <form asp-action="Edit">
+        <form asp-action="Edit" class="border p-4 rounded shadow-sm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <input type="hidden" asp-for="WorkingDayId" />
@@ -27,27 +27,32 @@
             <!-- Tarih -->
             <div class="mb-3">
                 <label asp-for="Date" class="form-label">Tarih</label>
-                <input asp-for="Date" class="form-control" />
+                <input asp-for="Date" class="form-control" type="date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
             </div>
 
             <!-- StartTime -->
             <div class="mb-3">
                 <label asp-for="StartTime" class="form-label">Başlangıç Saati</label>
-                <input asp-for="StartTime" class="form-control" />
+                <input asp-for="StartTime" class="form-control" type="time" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
 
             <!-- EndTime -->
             <div class="mb-3">
                 <label asp-for="EndTime" class="form-label">Bitiş Saati</label>
-                <input asp-for="EndTime" class="form-control" />
+                <input asp-for="EndTime" class="form-control" type="time" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
 
-            <button type="submit" class="btn btn-success">Kaydet</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial");
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }
